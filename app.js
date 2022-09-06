@@ -54,7 +54,7 @@ axios
         userInfoURL: userinfo_endpoint,
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
-        callbackURL: 'http://localhost:3000/authorization-code/callback',
+        callbackURL: 'https://periodic-steady-jump.glitch.me/authorization-code/callback',
         scope: 'groups profile offline_access',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
@@ -110,7 +110,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'http://localhost:3000/'
+      post_logout_redirect_uri: 'https://periodic-steady-jump.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
