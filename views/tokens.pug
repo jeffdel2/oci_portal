@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2= "My Tokens"
+  br
+  div
+    p Below  are the values for #{user.displayName} id and access tokens minted by Okta.
+  br
+  table.table.table-striped
+    thead 
+      tr 
+        th Claim 
+        th Value 
+    tbody 
+    for values, claims in user
+      tr 
+        td #{claims}
+        td #{values}
+        
+  br
+  form.navbar-form.navbar-left(method="get", action="/profile")
+            button#logout-button.btn.btn-primary(type="submit") Back to the profile page
