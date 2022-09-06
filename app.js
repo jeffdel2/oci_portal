@@ -55,7 +55,7 @@ axios
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         callbackURL: 'https://periodic-steady-jump.glitch.me/authorization-code/callback',
-        scope: 'groups profile offline_access',
+        scope: 'groups profile offline_access phone',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
@@ -101,8 +101,14 @@ app.use('/authorization-code/callback',
   }
 );
 
+//Add page to review basic profile data
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user });
+});
+
+// Add page to review token payloads
+app.use('/tokens', ensureLoggedIn, (req, res) => {
+  res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
 });
 
 app.post('/logout', (req, res, next) => {
