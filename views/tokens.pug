@@ -17,14 +17,15 @@ block content
         td #{claims}
         td #{values}
   br
+  br
   table.table.table-striped
     thead 
       tr 
         th ID Token 
     tbody 
-    for access_token in params
+    for idToken in user
       tr
-        td #{access_token}
+        td #{idToken}
         
   br
   form.navbar-form.navbar-left(method="get", action="/profile")
