@@ -22,9 +22,9 @@ block content
       tr 
         th ID Token 
     tbody 
-    for values, id_token in user
+    for access_token in params
       tr
-        td #{id_token}
+        td #{values}
         
   br
   form.navbar-form.navbar-left(method="get", action="/profile")
