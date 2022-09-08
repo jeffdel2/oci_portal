@@ -60,9 +60,9 @@ axios
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
           accessToken, refreshToken, params
-        }, null, 2)}\n*****`);
+        }, null, 2, null, 4)}\n*****`);
         id_token = idToken;
-        return done(null, profile, idToken);
+        return done(null, profile, null, idToken);
       }));
     }
     else {
@@ -109,6 +109,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 // Add page to review token payloads
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
+  console.log(req.user);
 });
 
 app.post('/logout', (req, res, next) => {
