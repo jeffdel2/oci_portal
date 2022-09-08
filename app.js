@@ -62,7 +62,7 @@ axios
           accessToken, refreshToken, params
         }, null, 2)}\n*****`);
         id_token = idToken;
-        return done(null, profile, context, idToken);
+        return done(null, profile, idToken);
       }));
     }
     else {
