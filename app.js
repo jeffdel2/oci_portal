@@ -60,9 +60,9 @@ axios
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
           accessToken, refreshToken, params
-        }, null, 2, null, 4)}\n*****`);
+        }, null, 2)}\n*****`);
         id_token = idToken;
-        return done(null, profile, null, idToken);
+        return done(null, profile);
       }));
     }
     else {
