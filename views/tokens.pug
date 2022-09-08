@@ -4,20 +4,8 @@ block content
   h2= "My Tokens"
   br
   div
-    p Below  are the values for #{user.displayName} id and access tokens minted by Okta.
-  br
-  table.table.table-striped
-    thead 
-      tr 
-        th Claim 
-        th Value 
-    tbody 
-    for values, claims in user
-      tr 
-        td #{claims}
-        td #{values}
-  br
-  br
+    p Below  are the values for #{user.displayName}'s id and access tokens minted by Okta.
+
   br
   table.table.table-striped
     thead 
@@ -27,8 +15,18 @@ block content
     for idToken in user
       tr
         td #{id_token}
+  br
+  table.table.table-striped
+    thead 
+      tr 
+        th Access Token 
+    tbody 
+    for accessToken in user
+      tr
+        td #{access_token}
         
   br
+  
   form.navbar-form.navbar-left(method="get", action="/profile")
             button#logout-button.btn.btn-primary(type="submit") Back to the profile page
             
