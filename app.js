@@ -55,7 +55,7 @@ axios
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         callbackURL: 'https://periodic-steady-jump.glitch.me/authorization-code/callback',
-        scope: 'groups profile offline_access phone',
+        scope: 'groups profile offline_access phone email',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
