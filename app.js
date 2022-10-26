@@ -40,7 +40,7 @@ app.use(passport.session());
 let logout_url, id_token;
 let _base = ORG_URL.slice(-1) == '/' ? ORG_URL.slice(0, -1) : ORG_URL;
 axios
-  .get(`${_base}/.well-known/openid-configuration`)
+  .get(`${_base}/oauth2/default/.well-known/oauth-authorization-server`)
   .then(res => {
     if (res.status == 200) {
       let { issuer, authorization_endpoint, token_endpoint, userinfo_endpoint, end_session_endpoint } = res.data;
@@ -117,7 +117,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'https://periodic-steady-jump.glitch.me/'
+      post_logout_redirect_uri: 'https://okta-rocks-ui.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
