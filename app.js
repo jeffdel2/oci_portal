@@ -89,6 +89,11 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
+signIn.authClient.tokenManager.get("accessToken")
+      .then(function(token) {
+          console.log("Got access Token!");
+          console.log(token);
+
 app.use('/', indexRouter);
 
 app.use('/login', passport.authenticate('oidc'));
