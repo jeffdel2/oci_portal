@@ -89,10 +89,12 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
-signIn.authClient.tokenManager.get("accessToken")
-      .then(function(token) {
-          console.log("Got access Token!");
-          console.log(token);
+////
+//fetch access token from client
+////
+
+
+
 
 app.use('/', indexRouter);
 
