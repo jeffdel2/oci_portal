@@ -13,28 +13,17 @@ block content
         th ID Token 
     tbody
       tr
-        td id="idtoken"
+        td #{idtoken}
   br
   table.table.table-striped
     thead 
       tr 
         th Access Token 
     tbody 
-    for accessToken in user
       tr
-        td id="amtoken"
+        td #{amtoken}
         
-  br
-  
-  <script type="text/javascript">
-    var idtoken = "id_token";
-    var amtoken = "am_token";
-
-    document.getElementById("idtoken").innerHTML = idtoken;
-    document.getElementById("amtoken").innerHTML = amtoken;
-  </script>
-  
-  br
+  br  
   
   form.navbar-form.navbar-left(method="get", action="/profile")
             button#logout-button.btn.btn-primary(type="submit") Back to the profile page
