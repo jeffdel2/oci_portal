@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
-let logout_url, id_token;
+let logout_url, id_token, am_token;
 let _base = ORG_URL.slice(-1) == '/' ? ORG_URL.slice(0, -1) : ORG_URL;
 axios
   .get(`${_base}/oauth2/default/.well-known/oauth-authorization-server`)
@@ -62,6 +62,7 @@ axios
           accessToken, refreshToken, params
         }, null, 2)}\n*****`);
         id_token = idToken;
+        am_token = accessToken;
         //console.log("This is the ID token= ", id_token);
         return done(null, profile);
       }));
@@ -119,7 +120,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
   console.log(req.user);
-  console.log(id_token);
+  console.log('This is the id token ', id_token);
 });
 
 app.post('/logout', (req, res, next) => {
