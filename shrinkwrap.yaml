@@ -7,6 +7,7 @@ dependencies:
   express: 4.18.1
   express-session: 1.17.3
   http-errors: 2.0.0
+  jwt-decode: 3.1.2
   morgan: 1.10.0
   passport: 0.6.0
   passport-openidconnect: 0.1.1
@@ -630,6 +631,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==
+  /jwt-decode/3.1.2:
+    dev: false
+    resolution:
+      integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
   /limiter/1.1.5:
     dev: false
     resolution:
@@ -1151,6 +1156,7 @@ specifiers:
   express: 4.18.1
   express-session: 1.17.3
   http-errors: 2.0.0
+  jwt-decode: ^3.1.2
   morgan: 1.10.0
   passport: 0.6.0
   passport-openidconnect: 0.1.1
