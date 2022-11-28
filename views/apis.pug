@@ -7,10 +7,15 @@ block content
     p Below are a few API endpoints that are protected by Okta CIS.
 
     br
-    a.button(href="www.google.com/api/public") Press
+    btn(a href="www.google.com/api/public") Press
     br
-    form.navbar-form.navbar-left(method="get", action="/profile")
+    form.navbar-form.navbar-left(method="get", action="www.google.com")
+              button#logout-button.btn.btn-primary(type="submit") TEST
+    br
     
+
+  br
+  
   br   
   form.navbar-form.navbar-left(method="get", action="/profile")
             button#logout-button.btn.btn-primary(type="submit") Back to the profile page
