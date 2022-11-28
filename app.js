@@ -62,6 +62,7 @@ axios
           accessToken, refreshToken, params
         }, null, 2)}\n*****`);
         id_token = idToken;
+        console.log("This is the ID token= ", id_token);
         return done(null, profile);
       }));
     }
