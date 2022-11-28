@@ -11,9 +11,10 @@ block content
     thead 
       tr 
         th ID Token 
-    tbody 
+    tbody
+    for value in id_token
       tr
-        td #{id_token}
+        td #{value}
   br
   table.table.table-striped
     thead 
