@@ -122,6 +122,13 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
   console.log(req.user);
 });
 
+/////
+// Add page to review token payloads
+app.use('/apis', ensureLoggedIn, (req, res) => {
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
+  console.log(req.user);
+});
+
 app.post('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) { return next(err); }
