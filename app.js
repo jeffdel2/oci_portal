@@ -55,7 +55,7 @@ axios
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         callbackURL: 'https://okta-rocks-ui.glitch.me/authorization-code/callback',
-        scope: 'groups profile offline_access phone email',
+        scope: 'groups profile offline_access phone',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
@@ -120,8 +120,6 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
   console.log(req.user);
-  console.log('***This is the id token = ', id_token, ' ***');
-  console.log('***This is the access token = ', am_token, ' ***');
 });
 
 app.post('/logout', (req, res, next) => {
