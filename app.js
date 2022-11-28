@@ -120,7 +120,8 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
   console.log(req.user);
-  console.log('This is the id token ', id_token);
+  console.log('***This is the id token = ', id_token, ' ***');
+  console.log('***This is the access token = ', am_token, ' ***');
 });
 
 app.post('/logout', (req, res, next) => {
