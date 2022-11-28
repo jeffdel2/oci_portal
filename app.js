@@ -117,6 +117,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 // Add page to review token payloads
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
+  let my_id_token = id_token;
   console.log(req.user);
 });
 
