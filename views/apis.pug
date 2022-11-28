@@ -7,4 +7,9 @@ block content
     p Below are a few API endpoints that are protected by Okta CIS.
 
     br
-    a.btn(href='#') Press
+    a.btn(href=API_URL'/api/public') Press
+    
+    
+  br   
+  form.navbar-form.navbar-left(method="get", action="/profile")
+            button#logout-button.btn.btn-primary(type="submit") Back to the profile page
