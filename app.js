@@ -118,7 +118,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 /////
 // Add page to review token payloads
 app.use('/tokens', ensureLoggedIn, (req, res) => {
-  res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
+  res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
   console.log(req.user);
   console.log('***This is the id token = ', id_token, ' ***');
   console.log('***This is the access token = ', am_token, ' ***');
