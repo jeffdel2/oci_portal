@@ -7,12 +7,20 @@ block content
     p Below are a few API endpoints that are protected by Okta CIS.
 
     br
-    btn(a href="www.google.com/api/public") Press
+
+    
     br
     form.navbar-form.navbar-left(method="get", action="www.google.com")
               button#logout-button.btn.btn-primary(type="submit") TEST
     br
     
+  <form action="https://google.com">
+    <input type="submit" value="Go to Google" />
+                    </form>
+    
+    br
+    
+  <input type="button" onclick="location.href='https://google.com';" value="Go to Google" />
 
   br
   
