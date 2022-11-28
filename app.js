@@ -11,7 +11,7 @@ const axios = require('axios');
 
 // source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
-const { ORG_URL, CLIENT_ID, CLIENT_SECRET } = process.env;
+const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
 
 var indexRouter = require('./routes/index');
 
