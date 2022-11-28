@@ -63,7 +63,7 @@ axios
         }, null, 2)}\n*****`);
         id_token = idToken;
         //console.log("This is the ID token= ", id_token);
-        return done(null, profile, idToken);
+        return done(null, profile);
       }));
     }
     else {
@@ -114,11 +114,12 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user });
 });
 
+/////
 // Add page to review token payloads
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user });
-  let my_id_token = id_token;
   console.log(req.user);
+  console.log(id_token);
 });
 
 app.post('/logout', (req, res, next) => {
