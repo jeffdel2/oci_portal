@@ -7,14 +7,17 @@ block content
     p Below  are the values for <b>#{user.displayName}'s</b> id and access tokens minted by Okta.
 
   br
+  <pre class="rounded"><code id="ipt-access-token" class="json">
   table.table.table-striped
     thead 
       tr 
         th ID Token 
     tbody
       tr
-        td #{idtoken}
+      td #{idtoken}
+  </code></pre>
   br
+  <pre class="rounded"><code id="ipt-access-token" class="json">
   table.table.table-striped
     thead 
       tr 
@@ -22,7 +25,7 @@ block content
     tbody 
       tr
         td #{amtoken}
-        
+  </code></pre>      
   br  
   
   form.navbar-form.navbar-left(method="get", action="/apis")
