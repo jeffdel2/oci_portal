@@ -18,6 +18,10 @@ btn {
   font-size: 20px;
 }
 
+button{
+  background-color: #4CAF50;
+}
+
 btn:hover{
   border-left: 3px solid blue;
 }
