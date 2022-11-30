@@ -6,14 +6,23 @@ block content
   div
     p Below are a few API endpoints that are protected by Okta CIS.
 
-    br
-
+  br
     
-  <input type="button" onclick="location.href='https://google.com';" value="Go to Google" />
-
-   br
+  <input type="button" onclick="location.href='#{apiurl}api/public';" value="Test Public API" />
   
-   br
+  br
+  br
+  
+  <input type="button" onclick="location.href='#{apiurl}api/private';" value="Test Private API" />
+  
+  br
+  br
+  
+  <input type="button" onclick="location.href='#{apiurl}api/access';" value="Test Access API" />
+
+  br
+  
+  br
 
 
   form.navbar-form.navbar-left(method="get", action="/profile")
