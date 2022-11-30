@@ -93,35 +93,7 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
-/**
- * Calls the API endpoint with an authorization token
- */
-const callApi = async (baseURL, endpoint) => {
-  try {
-    const token = await auth0.getTokenSilently();
 
-    const response = await fetch(baseURL + endpoint, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const responseData = await response.json();
-
-    const responseElement = document.getElementById("api-call-result");
-
-    responseElement.innerText = JSON.stringify(responseData, {}, 2);
-
-    document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
-
-    eachElement(".result-block", (c) => c.classList.add("show"));
-    
-    location.href = "/#anchor-results";
-  } catch (e) {
-    console.error(e);
-    alert("Unable to access API or API is not configured correctly.  Check the 'baseAPIUrl' in the 'index.html' file and your glitch API app");
-  }
-};
 
 
 
