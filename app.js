@@ -128,6 +128,7 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
   console.log(api_url);
+  decoded_am_token = jwt_decode(am_token);
 });
 
 app.post('/logout', (req, res, next) => {
