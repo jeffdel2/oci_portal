@@ -21,3 +21,11 @@ btn {
 btn:hover{
   border-left: 3px solid blue;
 }
+
+div.a {
+  float: left;
+}
+
+div.b {
+  float: right;
+}

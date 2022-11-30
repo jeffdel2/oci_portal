@@ -3,7 +3,7 @@ extends layout
 block content
   h2= "My APIs"
   br
-  div float:right
+  div.a
     p Below are a few API endpoints that are protected by Okta CIS.
 
   br
@@ -13,7 +13,7 @@ block content
   br
   br
   
-  <input type="button" onclick="location.href='#{apiurl}api/private';" value="Test Private API" />
+  button(type='button' class='btn btn-' onclick="location.href='#{apiurl}api/private';" value="Test Private API")
   
   br
   br
@@ -24,6 +24,9 @@ block content
   
   br
 
+  div.b
+    p TESTING FLOAT.
+  
 
   form.navbar-form.navbar-left(method="get", action="/profile")
             button#logout-button.btn.btn-primary(type="submit") Back to the profile page
