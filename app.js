@@ -123,9 +123,11 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: decoded_am_token });
   console.log(req.user);
   decoded_am_token = JSON.stringify(jwt_decode(am_token));
-  console.log('<<<<<<<<<<JWT DECODE= ', decoded_am_token, '>>>>>>>>>>>');
   console.log('--------------------------------------------------------');
+  console.log('<<<<<<<<<<AM DECODE= ', decoded_am_token, '>>>>>>>>>>>');
   decoded_id_token = jwt_decode(id_token);
+  console.log('--------------------------------------------------------');
+  console.log('<<<<<<<<<<ID DECODE= ', decoded_id_token, '>>>>>>>>>>>');
 });
 
 /////

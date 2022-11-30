@@ -18,14 +18,17 @@ block content
       
   </code></pre>
   br
-  <pre class="rounded"><code id="ipt-access-token" class="json">
+  <pre class="rounded"><code class="json">
   table.table.table-striped
     thead 
       tr 
-        th Access Token 
-    tbody 
+        th Claim
+        th Value
+    tbody
+    for values, claims in amtoken 
       tr
-        td #{amtoken}
+        td #{claims}
+        td #{values}
   </code></pre>      
   br  
   
