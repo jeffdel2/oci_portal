@@ -13,12 +13,13 @@ block content
   br
   br
   
-  button(type='button' class='btn btn-' onclick="location.href='#{apiurl}api/private';" value="Test Private API")
+  button.c-button Test Private API
   
   br
   br
   
-  <input type="button" onclick="location.href='#{apiurl}api/access';" value="Test Access API" />
+  a(href=#{apiurl}"api/private")
+    button.c-button Test Private API
 
   br
   
