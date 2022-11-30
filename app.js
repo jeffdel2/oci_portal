@@ -38,7 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
-let logout_url, id_token, am_token, api_url, decoded_am_token, decoded_id_token;
+let logout_url, id_token, am_token, api_url, decoded_am_token, decoded_id_token, decoded_am_token2;
 let _base = ORG_URL.slice(-1) == '/' ? ORG_URL.slice(0, -1) : ORG_URL;
 axios
   .get(`${_base}/oauth2/default/.well-known/oauth-authorization-server`)
@@ -122,8 +122,9 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/tokens', ensureLoggedIn, (req, res) => {
   res.render('tokens', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: decoded_am_token });
   console.log(req.user);
-  decoded_am_token = jwt_decode(am_token);
+  decoded_am_token = JSON.stringify(jwt_decode(am_token));
   console.log('<<<<<<<<<<JWT DECODE= ', decoded_am_token, '>>>>>>>>>>>');
+  console.log('--------------------------------------------------------');
   decoded_id_token = jwt_decode(id_token);
 });
 
