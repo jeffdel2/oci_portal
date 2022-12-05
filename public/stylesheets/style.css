@@ -26,12 +26,12 @@ btn:hover{
   border-left: 3px solid blue;
 }
 
-div-a {
+div.a{
   float: left;
   width: 50%;
 }
 
-div-b {
+div.b{
   float: right;
   width: 50%;
 }
