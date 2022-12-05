@@ -138,7 +138,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 
 /////
 // Add logic to call APIs
-async function callAPI(query) {
+async function callPublicAPI(query) {
   const response = await axios.get(
     `${api_url}/api/public`
   );
