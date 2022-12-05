@@ -136,6 +136,18 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   console.log(api_url);
 });
 
+/////
+// Add logic to call APIs
+async function callAPI(query) {
+  const response = await axios.get(
+    `${api_url}/api/public`
+  );
+
+  return response.data;
+}
+
+
+
 app.post('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) { return next(err); }
