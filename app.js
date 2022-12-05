@@ -138,12 +138,43 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 
 /////
 // Add logic to call APIs
-async function callPublicAPI(query) {
-  const response = await axios.get(
-    `${api_url}/api/public`
-  );
 
-  return response.data;
+function getJson(url, signIn, callback) {
+  console.log("getJson('" + url+ "')");
+  document.getElementById("apiResultsDisplay").innerHTML = "";
+  
+  const httpRequest = new XMLHttpRequest();
+  httpRequest.open("GET", url);
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState == 4) {
+      console.log(httpRequest.responseText);
+      callback(httpRequest.responseText);
+    }
+  }
+  httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
+  httpRequest.responseType="text";
+  
+  signIn.authClient.tokenManager.get("accessToken")
+      .then(function(token) {
+          console.log("Got access Token!");
+          console.log(token);
+          
+          httpRequest.setRequestHeader("Authorization","Bearer " + token.value);
+          httpRequest.send();
+
+      })
+      .catch(function(err) {
+        console.log("Unable to retrieve accessToken from local storage");
+      });
+  
+}
+
+function handlePublicAPICall(api_url, signIn) {
+  console.log("handlePublicAPICall()");
+  document.getElementById("apiResultsDisplay").innerHTML = "";
+  getJson(api_url + '/api/public', signIn, function(json){
+    document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
+  });
 }
 
 
