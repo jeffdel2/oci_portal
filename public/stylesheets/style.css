@@ -28,8 +28,10 @@ btn:hover{
 
 div.a {
   float: left;
+  width: 50%;
 }
 
 div.b {
   float: right;
+  width: 50%;
 }
