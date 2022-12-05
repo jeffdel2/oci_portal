@@ -3,34 +3,33 @@ extends layout
 block content
   h2= "My APIs"
   br
-  div.a
+  div-a
     p Below are a few API endpoints that are protected by Okta CIS.
 
-  br
-  br
+    br
+    br
   
-  a(href=`${apiurl}`+"api/public")
-    button.btn.btn-primary Test Public API
+    a(href=`${apiurl}`+"api/public")
+      button.btn.btn-primary Test Public API
     
-  br
-  br
+    br
+    br
     
-  a(href=`${apiurl}`+"api/private")
-    button.btn.btn-primary Test Private API
+    a(href=`${apiurl}`+"api/private")
+      button.btn.btn-primary Test Private API
     
-  br
-  br
+    br
+    br
     
-  a(href=`${apiurl}`+"api/access")
-    button.btn.btn-primary Test Access API
+    a(href=`${apiurl}`+"api/access")
+      button.btn.btn-primary Test Access API
   
-  br
-  br
-  br
+    br
+    br
   
-  div.b
-  .container
-    h3 Testing container
+  div-b
+    container
+      h3 Testing container
   
 
   form.navbar-form.navbar-left(method="get", action="/profile")
