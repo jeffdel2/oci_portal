@@ -8,8 +8,9 @@ block content
 
     br
     br
-  
-    a(href=`${apiurl}`+"api/public")
+              //- href="javascript: handlePublicAPICall(baseAPIUrl, signIn)"
+    
+    a(href=`javascript: handlePublicAPICall(baseAPIUrl, signIn)`)
       button.btn.btn-primary TESTING TESTING
 
     br
