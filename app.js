@@ -151,9 +151,9 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, handlePublicAPICall: handlePublicAPICall });
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, publicApiCall: publicApiCall });
   console.log(api_url);
-  console.log(handlePublicAPICall);
+  console.log(publicApiCall);
 });
 
 
