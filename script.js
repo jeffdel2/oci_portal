@@ -165,7 +165,7 @@ function openTokenTab(evt, tokenTabName) {
 }
 
 
-/* This mini lib is for formatting the JWT display */
+/* This mini lib is for formatting the JWT display 
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -293,4 +293,4 @@ function openTokenTab(evt, tokenTabName) {
     }, {
         "./lib/index": 3
     }]
-}, {}, [4])
+}, {}, [4]) */

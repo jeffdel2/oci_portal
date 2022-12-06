@@ -17,6 +17,8 @@ const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
 
 var indexRouter = require('./routes/index');
 
+var scriptHost = require('./script.js');
+
 var app = express();
 
 // view engine setup
@@ -131,8 +133,9 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, handlePublicAPICall: handlePublicAPICall });
   console.log(api_url);
+  console.log(handlePublicAPICall);
 });
 
 
