@@ -9,14 +9,11 @@ var qs = require('querystring');
 var { Strategy } = require('passport-openidconnect');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
-import { handlePublicAPICall } from "./script.js";
 
 // source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
 const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
 
-// source script.js
-//var scripts = require('./script.js');
 
 var indexRouter = require('./routes/index');
 
@@ -168,3 +165,43 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+/* Protect all of the API Calls */
+function handlePublicAPICall(baseUrl, signIn) {
+  console.log("handlePublicAPICall()");
+  document.getElementById("apiResultsDisplay").innerHTML = "";
+  getJson(baseUrl + '/api/public', signIn, function(json){
+    document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
+  });
+}
+
+/* js utils */
+function getJson(url, signIn, callback) {
+  console.log("getJson('" + url+ "')");
+  document.getElementById("apiResultsDisplay").innerHTML = "";
+  
+  const httpRequest = new XMLHttpRequest();
+  httpRequest.open("GET", url);
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState == 4) {
+      console.log(httpRequest.responseText);
+      callback(httpRequest.responseText);
+    }
+  }
+  httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
+  httpRequest.responseType="text";
+  
+  signIn.authClient.tokenManager.get("accessToken")
+      .then(function(token) {
+          console.log("Got access Token!");
+          console.log(token);
+          
+          httpRequest.setRequestHeader("Authorization","Bearer " + token.value);
+          httpRequest.send();
+
+      })
+      .catch(function(err) {
+        console.log("Unable to retrieve accessToken from local storage");
+      });
+  
+}

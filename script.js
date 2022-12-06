@@ -1,15 +1,13 @@
 /* All support JS goes here */
 
 /* Protect all of the API Calls */
-function handlePublicAPICall(baseUrl, signIn) {
+export function handlePublicAPICall(baseUrl, signIn) {
   console.log("handlePublicAPICall()");
   document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
   });
 }
-
-export { handlePublicAPICall };
 
 function handlePrivateAPICall(baseUrl, signIn) {
   console.log("handlePrivateAPICall()");
