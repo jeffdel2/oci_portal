@@ -101,13 +101,15 @@ function ensureLoggedIn(req, res, next) {
 
 // Testing calls to apis
 
-function apiCall() {
-    
+function publicApiCall() {
+    let setResponsePublic
     const publicResponse = () => {
     axios.get(API_URL + "/api/public")
-      .then(data=>console.log(data))
+      .then((res) => {
+        setResponsePublic(res.data);
+    })
       .catch(err=>console.log(err))
-    };
+    }
 }
 
 
