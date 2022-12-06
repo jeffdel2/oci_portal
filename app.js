@@ -127,11 +127,11 @@ function getJson(url, signIn, callback) {
   
 }
 
-function handlePublicAPICall(api_url, signIn) {
+var handlePublicAPICall = function handlePublicAPICall(api_url) {
   console.log("handlePublicAPICall()");
   console.log(API_URL);
   document.getElementById("apiResultsDisplay").innerHTML = "";
-  getJson(api_url + '/api/public', signIn, function(json){
+  getJson(api_url + '/api/public', function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
   });
 }
