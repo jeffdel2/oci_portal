@@ -11,7 +11,7 @@ block content
               //- href="javascript: handlePublicAPICall(baseAPIUrl, signIn)"
     
     a(href=`${handlePublicAPICall}`)
-    button.btn.btn-primary `onclick="handlePublicAPICall('demo').innerHTML=Date()">What is the time?`
+    button(class='.btn.btn-primary' onclick='handlePublicAPICall(' ${api_url} ')' value='Click here')
 
     br
     br
@@ -37,7 +37,7 @@ block content
   br
   br
   div.b
-  kbd Testing container
+  kbd id=demo
     br
     br
     br
