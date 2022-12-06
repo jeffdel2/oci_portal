@@ -127,7 +127,7 @@ function getJson(url, signIn, callback) {
   
 }
 
-var handlePublicAPICall = function handlePublicAPICall(api_url) {
+var handlePublicAPICall = function handlePublicAPICall(API_URL) {
   console.log("handlePublicAPICall()");
   console.log(API_URL);
   document.getElementById("apiResultsDisplay").innerHTML = "";
@@ -172,7 +172,7 @@ app.use('/tokens', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, handlePublicAPICall: handlePublicAPICall });
   console.log(api_url);
 });
 
