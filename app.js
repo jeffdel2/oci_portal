@@ -14,6 +14,9 @@ var jwt_decode = require('jwt-decode');
 require('dotenv').config({ path: '.okta.env' })
 const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
 
+//source script.js
+var scripts = require('./script.js');
+
 var indexRouter = require('./routes/index');
 
 var app = express();
