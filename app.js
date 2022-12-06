@@ -17,7 +17,7 @@ const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
 
 var indexRouter = require('./routes/index');
 
-var scriptHost = require('./script.js');
+// var scriptHost = require('./script.js');
 
 var app = express();
 
