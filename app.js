@@ -81,11 +81,6 @@ axios
     console.error(error);
   });
 
-    axios.get(API_URL + "/api/public")
-      .then(data=>console.log(data))
-      .catch(err=>console.log(err))
-
-
 
 passport.serializeUser((user, next) => {
   next(null, user);
@@ -102,6 +97,16 @@ function ensureLoggedIn(req, res, next) {
 
   res.redirect('/login')
 }
+
+
+// Testing calls to apis
+
+    axios.get(API_URL + "/api/public")
+      .then(data=>console.log(data))
+      .catch(err=>console.log(err))
+
+
+
 
 
 
