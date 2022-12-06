@@ -156,6 +156,14 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   console.log(publicApiCall);
 });
 
+/////
+// Add page to test api endpoints new methods
+app.use('/newapis', ensureLoggedIn, (req, res) => {
+  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, publicApiCall: publicApiCall });
+  console.log(api_url);
+  console.log(publicApiCall);
+});
+
 
 app.post('/logout', (req, res, next) => {
   req.logout(err => {

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h2= "My APIs"
+  br
+  div.col-xs-6
+    p Below are a few API endpoints that are protected by Okta CIS.
+
+    br
+    br
+  
+    button.btn.btn-primary(onclick=`${publicApiCall}`)
+
+    br
+    br
+  
+    a(href=`${apiurl}`+"api/public")
+      button.btn.btn-primary Test Public API
+
+  
+  br
+  br
+  br
+  br
+  br
+  div.b
+  kbd=("demo")
+    br
+    br
+    br
+  form.navbar-form.navbar-left(method="get", action="/profile")
+      button#logout-button.btn.btn-primary(type="submit") Back to the profile page
