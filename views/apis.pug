@@ -16,6 +16,12 @@ block content
     br
     br
   
+    a(href=`${handlePublicAPICall}`)
+    button(class='.btn.btn-primary' onclick=`handlePublicAPICall(' ${api_url} ')` value="Click here")
+   
+    br
+    br
+  
     a(href=`${apiurl}`+"api/public")
       button.btn.btn-primary Test Public API
     
@@ -37,7 +43,7 @@ block content
   br
   br
   div.b
-  kbd#name(id=`demo`
+  kbd#name(cont='demo')
     br
     br
     br
