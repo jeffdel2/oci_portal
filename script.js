@@ -296,7 +296,7 @@ function openTokenTab(evt, tokenTabName) {
 }, {}, [4])
 
 
-<script>
+
     
     //Set up Okta sign-in widget
     var signIn = new OktaSignIn({
@@ -353,6 +353,5 @@ function openTokenTab(evt, tokenTabName) {
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
     
-	</script>
 
 
