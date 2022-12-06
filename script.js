@@ -1,7 +1,7 @@
 /* All support JS goes here */
 
 /* Protect all of the API Calls */
-export function handlePublicAPICall(baseUrl, signIn) {
+function handlePublicAPICall(baseUrl, signIn) {
   console.log("handlePublicAPICall()");
   document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
