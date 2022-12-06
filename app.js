@@ -9,6 +9,7 @@ var qs = require('querystring');
 var { Strategy } = require('passport-openidconnect');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
+import { handlePublicAPICall } from "./script.js";
 
 // source and import environment variables
 require('dotenv').config({ path: '.okta.env' })

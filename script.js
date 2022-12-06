@@ -9,6 +9,8 @@ function handlePublicAPICall(baseUrl, signIn) {
   });
 }
 
+export { handlePublicAPICall };
+
 function handlePrivateAPICall(baseUrl, signIn) {
   console.log("handlePrivateAPICall()");
   document.getElementById("apiResultsDisplay").innerHTML = "";
