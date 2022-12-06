@@ -101,9 +101,14 @@ function ensureLoggedIn(req, res, next) {
 
 // Testing calls to apis
 
+function apiCall() {
+    
+    const publicResponse = () => {
     axios.get(API_URL + "/api/public")
       .then(data=>console.log(data))
       .catch(err=>console.log(err))
+    };
+}
 
 
 
