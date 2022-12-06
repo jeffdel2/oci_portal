@@ -294,3 +294,65 @@ function openTokenTab(evt, tokenTabName) {
         "./lib/index": 3
     }]
 }, {}, [4])
+
+
+<script>
+    
+    //Set up Okta sign-in widget
+    var signIn = new OktaSignIn({
+      baseUrl: 'https://login.j5demo.com',
+      clientId: '0oa52dr8z707Rfc1y5d7',
+      redirectUri: 'https://demo-ui.glitch.me/',
+      authParams: {
+        issuer: 'https://login.j5demo.com/oauth2/aus4kt9mtfGeqkdte5d7'
+      },
+      features: {
+        rememberMe: false,
+        selfServiceUnlock: true,
+        registration: false,
+      },
+      idps: [
+          {id: '0oa4d8yr6qH9AAe7J5d7', text: 'Login.gov', className: 'usa-button'}
+        ],
+      idpDisplay: 'SECONDARY',
+      i18n: {
+        'en': {
+            'primaryauth.title': 'D.E.M.O Login',
+            'primaryauth.submit': 'Sign in with Okta',
+            //Full list here: https://github.com/okta/okta-signin-widget/blob/master/packages/@okta/i18n/src/properties/login.properties
+        }
+    },
+      el: '#okta-login-container',    
+    });
+
+    //Display the Okta sign-in widget
+    signIn.showSignInToGetTokens({
+      scopes: ['openid', 'email', 'profile']
+    }).then(function(tokens) {
+      // Store tokens
+      signIn.authClient.tokenManager.add('idToken', tokens.idToken);
+      signIn.authClient.tokenManager.add('accessToken', tokens.accessToken);
+
+      checkAndShowIdToken(signIn);
+    }).catch(function(error) {
+      // This function is invoked with errors the widget cannot recover from:
+      // Known errors: CONFIG_ERROR, UNSUPPORTED_BROWSER_ERROR
+      checkAndShowIdToken(signIn);
+    });
+        
+    signIn.on('ready', function(){
+      document.getElementById("signin-header").style.display = "none";
+      document.querySelector(".usa-button").classList.remove("social-auth-button", "social-auth-general-idp-button", "no-translate", "link-button");
+      document.querySelector(".usa-button").innerHTML = "Sign in with <span>Login.gov</span>";
+    });
+    
+    //UNCOMMENT TO SHOW API AM
+
+    showChallenge2();
+
+    //Host custom API
+    var baseAPIUrl = "https://demo-agency-api.glitch.me";
+    
+	</script>
+
+
