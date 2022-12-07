@@ -68,8 +68,8 @@ axios
         id_token = idToken;
         am_token = accessToken;
         api_url = API_URL;
-        decoded_am_token = JSON.stringify(jwt_decode(am_token));
-        decoded_id_token = JSON.stringify(jwt_decode(id_token));
+        decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
+        decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
         return done(null, profile);
       }));
     }
@@ -101,7 +101,7 @@ function ensureLoggedIn(req, res, next) {
 
 // Testing calls to apis
 
-function publicApiCall() {
+module.exports = function (publicApiCall) {
     let setResponsePublic
     const publicResponse = () => {
     axios.get(API_URL + "/api/public")
