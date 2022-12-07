@@ -102,16 +102,14 @@ function ensureLoggedIn(req, res, next) {
 // Testing calls to apis
 /////
 
-module.exports = function (publicApiCall) {
-    let setResponsePublic
-    const publicResponse = () => {
-    axios.get(API_URL + "/api/public")
-      .then((res) => {
-        setResponsePublic(res.data);
-    })
-      .catch(err=>console.log(err))
-    }
+function handlePublicAPICall(baseUrl, signIn) {
+  console.log("handlePublicAPICall()");
+  document.getElementById("apiResultsDisplay").innerHTML = "";
+  getJson(baseUrl + '/api/public', signIn, function(json){
+    document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
+  });
 }
+
 
 
 
