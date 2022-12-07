@@ -12,7 +12,7 @@ var jwt_decode = require('jwt-decode');
 
 // source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
-const { ORG_URL, CLIENT_ID, CLIENT_SECRET, API_URL } = process.env;
+const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
 
 var indexRouter = require('./routes/index');
@@ -41,7 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
-let logout_url, id_token, am_token, api_url, decoded_am_token, decoded_id_token, decoded_am_token2;
+let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2;
 let _base = ORG_URL.slice(-1) == '/' ? ORG_URL.slice(0, -1) : ORG_URL;
 axios
   .get(`${_base}/oauth2/default/.well-known/oauth-authorization-server`)
@@ -67,7 +67,7 @@ axios
         }, null, 2)}\n*****`);
         id_token = idToken;
         am_token = accessToken;
-        api_url = API_URL;
+        //baseUrl = baseUrl;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
         return done(null, profile);
@@ -142,16 +142,16 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 
 /////
 // Add page to test api endpoints
-app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
-  console.log(api_url);
+app.use('/apis', handlePublicAPICall, ensureLoggedIn, (req, res) => {
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
+  console.log(baseUrl);
   //console.log(publicApiCall);
 });
 
 /////
 // Add page to test api endpoints new methods
 app.use('/newapis', ensureLoggedIn, (req, res) => {
-  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
+  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(api_url);
   //console.log(publicApiCall);
 });
