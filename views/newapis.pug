@@ -36,7 +36,7 @@ block content
     br
     br
     
-    <button onclick=`!{handlePublicAPICall}`>Click this one here</button>
+    <button onclick=`${handlePublicAPICall}`>Click this one here</button>
     
     br
     br
@@ -66,4 +66,8 @@ block content
       button#logout-button.btn.btn-primary(type="submit") Back to the profile page
       
 script(src="/script.js")
+
+script.
+
+  #{console.log("TESTING DIRECT11")
       

@@ -1,5 +1,7 @@
 /* All support JS goes here */
 
+var scriptVar = "000";
+
 /* Protect all of the API Calls */
 function handlePublicAPICall(baseUrl, signIn) {
   console.log("handlePublicAPICall()");
