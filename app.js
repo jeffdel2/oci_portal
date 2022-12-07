@@ -142,7 +142,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 
 /////
 // Add page to test api endpoints
-app.use('/apis', handlePublicAPICall, ensureLoggedIn, (req, res) => {
+app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   //console.log(publicApiCall);
@@ -151,8 +151,8 @@ app.use('/apis', handlePublicAPICall, ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints new methods
 app.use('/newapis', ensureLoggedIn, (req, res) => {
-  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
-  console.log(api_url);
+  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl, handlePublicAPICall: handlePublicAPICall });
+  console.log(baseUrl);
   //console.log(publicApiCall);
 });
 
