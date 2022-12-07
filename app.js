@@ -111,17 +111,9 @@ function handlePublicAPICall(baseUrl, signIn) {
 }
 
 
-
-
-
-
-
 ////
-//fetch access token from client
+//add endpoints
 ////
-
-
-
 
 app.use('/', indexRouter);
 
