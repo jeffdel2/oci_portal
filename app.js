@@ -98,8 +98,9 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
-
+/////
 // Testing calls to apis
+/////
 
 module.exports = function (publicApiCall) {
     let setResponsePublic
@@ -144,17 +145,17 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, publicApiCall: publicApiCall });
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
   console.log(api_url);
-  console.log(publicApiCall);
+  //console.log(publicApiCall);
 });
 
 /////
 // Add page to test api endpoints new methods
 app.use('/newapis', ensureLoggedIn, (req, res) => {
-  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url, publicApiCall: publicApiCall });
+  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, apiurl: api_url });
   console.log(api_url);
-  console.log(publicApiCall);
+  //console.log(publicApiCall);
 });
 
 
