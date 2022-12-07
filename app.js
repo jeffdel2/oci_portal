@@ -100,15 +100,48 @@ function ensureLoggedIn(req, res, next) {
 /* Protect all of the API Calls */
 function handlePublicAPICall(baseUrl, signIn) {
   console.log("handlePublicAPICall()");
-  document.getElementById("apiResultsDisplay").innerHTML = "";
+  //document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
   });
 }
 
+/* js utils */
+function getJson(url, signIn, callback) {
+  console.log("getJson('" + url+ "')");
+  //document.getElementById("apiResultsDisplay").innerHTML = "";
+  
+  const httpRequest = new XMLHttpRequest();
+  httpRequest.open("GET", url);
+  httpRequest.onreadystatechange = function() {
+    if (httpRequest.readyState == 4) {
+      console.log(httpRequest.responseText);
+      callback(httpRequest.responseText);
+    }
+  }
+  httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
+  httpRequest.responseType="text";
+  
+  signIn.authClient.tokenManager.get("accessToken")
+      .then(function(token) {
+          console.log("Got access Token!");
+          console.log(token);
+          
+          httpRequest.setRequestHeader("Authorization","Bearer " + token.value);
+          httpRequest.send();
+
+      })
+      .catch(function(err) {
+        console.log("Unable to retrieve accessToken from local storage");
+      });
+  
+}
+
+///////////////
 ////
 //add endpoints
 ////
+///////////////
 
 app.use('/', indexRouter);
 
@@ -137,7 +170,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 
 /////
 // Add page to test api endpoints new methods
-app.use('/newapis', handlePublicAPICall, ensureLoggedIn, (req, res) => {
+app.use('/newapis', handlePublicAPICall, getJson, ensureLoggedIn, (req, res) => {
   res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   //console.log(publicApiCall);
@@ -174,36 +207,7 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-/* js utils */
-function getJson(url, signIn, callback) {
-  console.log("getJson('" + url+ "')");
-  document.getElementById("apiResultsDisplay").innerHTML = "";
-  
-  const httpRequest = new XMLHttpRequest();
-  httpRequest.open("GET", url);
-  httpRequest.onreadystatechange = function() {
-    if (httpRequest.readyState == 4) {
-      console.log(httpRequest.responseText);
-      callback(httpRequest.responseText);
-    }
-  }
-  httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
-  httpRequest.responseType="text";
-  
-  signIn.authClient.tokenManager.get("accessToken")
-      .then(function(token) {
-          console.log("Got access Token!");
-          console.log(token);
-          
-          httpRequest.setRequestHeader("Authorization","Bearer " + token.value);
-          httpRequest.send();
 
-      })
-      .catch(function(err) {
-        console.log("Unable to retrieve accessToken from local storage");
-      });
-  
-}
 
 /* sign in helpers */
 

@@ -18,6 +18,7 @@
     "passport-openidconnect": "0.1.1",
     "pug": "3.0.2",
     "@okta/jwt-verifier": "^2.6.0",
-    "jwt-decode": "^3.1.2"
+    "jwt-decode": "^3.1.2",
+    "xmlhttp": "^0.0.0"
   }
 }
