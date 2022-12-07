@@ -14,7 +14,7 @@ block content
     br
     br
     
-    <button
+    <button onclick="handlePublicAPICall()">Click this one here</button>
     
     br
     br
@@ -33,5 +33,12 @@ block content
     br
     br
     br
+  <br>
+  <div>
+  <textarea id="apiResultsDisplay"></textarea>
+  </div>
+  br
+  br
+  br
   form.navbar-form.navbar-left(method="get", action="/profile")
       button#logout-button.btn.btn-primary(type="submit") Back to the profile page
