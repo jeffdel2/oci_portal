@@ -35,36 +35,22 @@ block content
     
     br
     br
-    
-    <button onclick=`${handlePublicAPICall}`>Click this one here</button>
-    
-    br
-    br
-  
-    a(href=`${baseUrl}`+"api/public")
-      button.btn.btn-primary Test Public API
 
-  
-  br
-  br
-  br
-  br
-  br
   div.b
   kbd#apiResultsDisplay
     br
     br
     br
   <br>
-  <div>
-  <textarea id="apiResultsDisplay"></textarea>
-  </div>
+  <div><textarea id="apiResultsDisplay"></textarea></div>
   br
-  br
-  br
-  form.navbar-form.navbar-left(method="get", action="/profile")
-      button#logout-button.btn.btn-primary(type="submit") Back to the profile page
-      
+br
+br
+form.navbar-form.navbar-left(method="get", action="/profile")
+          button#logout-button.btn.btn-primary(type="submit") Back to the profile page
+
+div.collapse
+
 script(src="/script.js")
 
 script.
