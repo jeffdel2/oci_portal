@@ -67,7 +67,6 @@ axios
         }, null, 2)}\n*****`);
         id_token = idToken;
         am_token = accessToken;
-        //baseUrl = baseUrl;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
         return done(null, profile);
@@ -96,18 +95,6 @@ function ensureLoggedIn(req, res, next) {
   }
 
   res.redirect('/login')
-}
-
-/////
-// Testing calls to apis
-/////
-
-function handlePublicAPICall(baseUrl, signIn) {
-  console.log("handlePublicAPICall()");
-  document.getElementById("apiResultsDisplay").innerHTML = "";
-  getJson(baseUrl + '/api/public', signIn, function(json){
-    document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
-  });
 }
 
 
@@ -143,7 +130,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints new methods
 app.use('/newapis', ensureLoggedIn, (req, res) => {
-  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl, handlePublicAPICall: handlePublicAPICall });
+  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   //console.log(publicApiCall);
 });
@@ -180,10 +167,10 @@ app.use(function (err, req, res, next) {
 module.exports = app;
 
 /* Protect all of the API Calls */
-function handlePublicAPICall(api_url, signIn) {
+function handlePublicAPICall(baseUrl, signIn) {
   console.log("handlePublicAPICall()");
   document.getElementById("apiResultsDisplay").innerHTML = "";
-  getJson(api_url + '/api/public', signIn, function(json){
+  getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
   });
 }
