@@ -145,7 +145,7 @@ function getJson(url, signIn, callback) {
 
 app.use('/', indexRouter);
 
-app.use('/static', express.static('public'));
+app.use('/', express.static('public'));
 
 app.use('/login', passport.authenticate('oidc'));
 
