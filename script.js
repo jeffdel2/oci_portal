@@ -1,6 +1,6 @@
 /* All support JS goes here */
 var jwt_decode = require('jwt-decode');
-var OktaSignIn = require('@okta/okta-signin-widget');
+//var OktaSignIn = require('@okta/okta-signin-widget');
 var scriptVar = "000";
 
 /* Protect all of the API Calls */
@@ -9,9 +9,6 @@ function handlePublicAPICall(baseUrl, signIn) {
   document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
-  module.exports.getSomeThings = function() {
-        return someThings();
-    }
   });
 }
 
@@ -360,5 +357,7 @@ function openTokenTab(evt, tokenTabName) {
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
     
-
+module.exports = {
+    handlePublicAPICall
+};
 

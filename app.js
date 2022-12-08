@@ -37,6 +37,10 @@ app.use(session({
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
+//import script
+const script = require('./script.js');
+console.log(script.handlePublicAPICall);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -119,6 +123,7 @@ app.use('/authorization-code/callback',
 //Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
+  console.log("TESTING IMPORT CODE: ", script.handlePublicAPICall);
 });
 
 /////
