@@ -14,10 +14,7 @@ var jwt_decode = require('jwt-decode');
 require('dotenv').config({ path: '.okta.env' })
 const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
-
 var indexRouter = require('./routes/index');
-
-// var scriptHost = require('./script.js');
 
 var app = express();
 
@@ -100,45 +97,6 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
-/* Protect all of the API Calls */
-function handlePublicAPICall(baseUrl, signIn) {
-  console.log("handlePublicAPICall()");
-  document.getElementById("apiResultsDisplay").innerHTML = "";
-  getJson(baseUrl + '/api/public', signIn, function(json){
-    document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
-  });
-}
-
-/* js utils */
-function getJson(url, signIn, callback) {
-  console.log("getJson('" + url+ "')");
-  document.getElementById("apiResultsDisplay").innerHTML = "";
-  
-  const httpRequest = new XMLHttpRequest();
-  httpRequest.open("GET", url);
-  httpRequest.onreadystatechange = function() {
-    if (httpRequest.readyState == 4) {
-      console.log(httpRequest.responseText);
-      callback(httpRequest.responseText);
-    }
-  }
-  httpRequest.setRequestHeader("Access-Control-Allow-Origin","*");
-  httpRequest.responseType="text";
-  
-  signIn.authClient.tokenManager.get("accessToken")
-      .then(function(token) {
-          console.log("Got access Token!");
-          console.log(token);
-          
-          httpRequest.setRequestHeader("Authorization","Bearer " + token.value);
-          httpRequest.send();
-
-      })
-      .catch(function(err) {
-        console.log("Unable to retrieve accessToken from local storage");
-      });
-  
-}
 
 ///////////////
 ////
@@ -209,75 +167,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-
-/* sign in helpers */
-
-function checkAndShowIdToken(signIn) {
-  console.log("checkAndShowIdToken()");
-
-  signIn.authClient.tokenManager.get("idToken")
-      .then(function(token) {
-        console.log("Got id Token!");
-          // Token is valid
-          signIn.authClient.token.verify(token)
-            .then(function() {
-              // the idToken is valid
-              console.log("Token is Valid!");
-              console.log(token);
-              document.getElementById("idTokenDisplay").innerHTML = JSON.stringify(jwt_decode(token.value), null, 4);
-              showAccessToken(signIn);
-              showLoggedInStuff(signIn);
-              document.getElementById("showIdTokenTabBtn").click();
-            })
-            .catch(function(err) {
-              console.log("Token is not valid!");
-              showNotLoggedInStuff(signIn);
-            });
-      })
-      .catch(function(err) {
-        console.log("Unable to retrieve idToken from local storage");
-        showNotLoggedInStuff(signIn);
-      });
-}
-
-function showAccessToken(signIn) {
-  console.log("showAccessToken()");
-
-  signIn.authClient.tokenManager.get("accessToken")
-      .then(function(token) {
-          console.log("Got access Token!");
-          console.log(token);
-          document.getElementById("accessTokenDisplay").innerHTML = JSON.stringify(jwt_decode(token.value), null, 4); 
-
-      })
-      .catch(function(err) {
-        console.log("Unable to retrieve accessToken from local storage");
-      });
-}
-
-function showNotLoggedInStuff(signIn) {
-  console.log("showNotLoggedInStuff()");
-  //Show login stuff
-  signIn.show();
-  document.getElementById("signin-header").style.display = "block";
-  //Hide post login stuff
-  document.getElementById("okta-post-login-container").style.display = "none";
-}
-
-function showLoggedInStuff(signIn) {
-  console.log("showLoggedInStuff()");
-  //Hide login stuff
-  signIn.hide();
-  document.getElementById("signin-header").style.display = "none";
-  //Show post login stuff
-  document.getElementById("okta-post-login-container").style.display = "block";
-}
-
-function signOut(signIn) {
-  console.log("signOut()");
-  signIn.authClient.signOut({
-    postLogoutRedirectUri: window.location.origin
-  });
-}

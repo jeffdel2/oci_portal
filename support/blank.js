@@ -1,10 +1,15 @@
 /* All support JS goes here */
 
+var jwt_decode = require('jwt-decode');
 var scriptVar = "000";
+
+require('dotenv').config({ path: '.okta.env' })
+const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
 /* Protect all of the API Calls */
 function handlePublicAPICall(baseUrl, signIn) {
-  console.log("handlePublicAPICall()");
+  console.log("UPDATED handlePublicAPICall()");
+  console.log(baseUrl);
   document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
@@ -168,7 +173,7 @@ function openTokenTab(evt, tokenTabName) {
 
 
 
-/* This mini lib is for formatting the JWT display
+/* This mini lib is for formatting the JWT display */
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -298,11 +303,9 @@ function openTokenTab(evt, tokenTabName) {
     }]
 }, {}, [4])
 
-*/
 
 
 
-    /*
     //Set up Okta sign-in widget
     var signIn = new OktaSignIn({
       baseUrl: 'https://login.j5demo.com',
@@ -358,5 +361,5 @@ function openTokenTab(evt, tokenTabName) {
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
     
-*/
+
 
