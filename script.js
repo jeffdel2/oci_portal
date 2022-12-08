@@ -1,5 +1,5 @@
 /* All support JS goes here */
-
+var jwt_decode = require('jwt-decode');
 var scriptVar = "000";
 
 /* Protect all of the API Calls */
@@ -168,7 +168,7 @@ function openTokenTab(evt, tokenTabName) {
 
 
 
-/* This mini lib is for formatting the JWT display
+/* This mini lib is for formatting the JWT display */
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -298,11 +298,9 @@ function openTokenTab(evt, tokenTabName) {
     }]
 }, {}, [4])
 
-*/
 
 
 
-    /*
     //Set up Okta sign-in widget
     var signIn = new OktaSignIn({
       baseUrl: 'https://login.j5demo.com',
@@ -358,5 +356,5 @@ function openTokenTab(evt, tokenTabName) {
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
     
-*/
+
 
