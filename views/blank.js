@@ -37,12 +37,12 @@ function handleAccessAPICall(baseUrl, signIn) {
   });
 }
 
-function getJson(url, signIn, callback) {
-  console.log("getJson('" + url+ "')");
+function getJson(baseUrl, signIn, callback) {
+  console.log("getJson('" + baseUrl+ "')");
   document.getElementById("apiResultsDisplay").innerHTML = "";
   
   const httpRequest = new XMLHttpRequest();
-  httpRequest.open("GET", url);
+  httpRequest.open("GET", baseUrl);
   httpRequest.onreadystatechange = function() {
     if (httpRequest.readyState == 4) {
       console.log(httpRequest.responseText);
@@ -168,7 +168,7 @@ function openTokenTab(evt, tokenTabName) {
 
 
 
-/* This mini lib is for formatting the JWT display
+/* This mini lib is for formatting the JWT display */
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -298,11 +298,9 @@ function openTokenTab(evt, tokenTabName) {
     }]
 }, {}, [4])
 
-*/
 
 
-
-    /*
+    
     //Set up Okta sign-in widget
     var signIn = new OktaSignIn({
       baseUrl: 'https://login.j5demo.com',
@@ -358,5 +356,5 @@ function openTokenTab(evt, tokenTabName) {
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
     
-*/
+
 
