@@ -23,7 +23,6 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('static', path.join(__dirname, 'static'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
@@ -37,7 +36,9 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/static', express.static('public'));
+
+app.use(express.static('public'));
+app.use('/support', express.static(__dirname + '/support'));
 
 app.use(passport.initialize());
 app.use(passport.session());
