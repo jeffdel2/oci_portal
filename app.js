@@ -23,6 +23,7 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.set('static', path.join(__dirname, 'static'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
