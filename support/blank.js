@@ -1,15 +1,27 @@
 /* All support JS goes here */
 
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var session = require('express-session');
+var passport = require('passport');
+var qs = require('querystring');
+var { Strategy } = require('passport-openidconnect');
+const axios = require('axios');
 var jwt_decode = require('jwt-decode');
-var scriptVar = "000";
 
-require('dotenv').config({ path: '.okta.env' })
-const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
+var scriptVar = "000";
+var baseUrl = "www.google.com";
+
+//require('dotenv').config({ path: '/.okta.env' })
+//const { baseUrl } = process.env;
 
 /* Protect all of the API Calls */
 function handlePublicAPICall(baseUrl, signIn) {
-  console.log("UPDATED handlePublicAPICall()");
-  console.log(baseUrl);
+  console.log("handlePublicAPICall()");
+  console.log(baseUrl);  
   document.getElementById("apiResultsDisplay").innerHTML = "";
   getJson(baseUrl + '/api/public', signIn, function(json){
     document.getElementById("apiResultsDisplay").innerHTML = JSON.stringify(JSON.parse(json), null, 4);
@@ -360,6 +372,5 @@ function openTokenTab(evt, tokenTabName) {
 
     //Host custom API
     var baseAPIUrl = "https://demo-agency-api.glitch.me";
-    
 
 
