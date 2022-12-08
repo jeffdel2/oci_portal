@@ -14,7 +14,9 @@ var jwt_decode = require('jwt-decode');
 
 // source and import environment variables
 require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
+//require('dotenv').config({ path: require('find-config')('.okta.env') })
 const { baseUrl } = process.env;
+console.log(require("dotenv").config());
 
 
 /* Protect all of the API Calls */
