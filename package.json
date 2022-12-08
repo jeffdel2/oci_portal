@@ -19,6 +19,7 @@
     "pug": "3.0.2",
     "@okta/jwt-verifier": "^2.6.0",
     "jwt-decode": "^3.1.2",
-    "xmlhttp": "^0.0.0"
+    "xmlhttp": "^0.0.0",
+    "@okta/okta-signin-widget": "^7.1.0"
   }
 }
