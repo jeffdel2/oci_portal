@@ -32,6 +32,8 @@ block content
     br
   
     button.btn.btn-primary(onclick= `${handlePublicAPICall}`) Click here
+    br
+    button.btn.btn-primary(href='#', type='button', onclick='something()') Hey lets try this
     
     br
     br
@@ -54,6 +56,7 @@ div.collapse
 script(src="/script.js")
 
 script.
-
-  console.log("TESTING DIRECT11")
+  var something = function () {
+      document.querySelector("div.collapse").style("display", "block");
+    }
       
