@@ -37,9 +37,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use('/static', (req, res) => {
-  res.render('static');
-});
+app.use('/static', express.static('public'));
 
 app.use(passport.initialize());
 app.use(passport.session());
