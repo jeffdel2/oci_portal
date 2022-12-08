@@ -12,11 +12,10 @@ var { Strategy } = require('passport-openidconnect');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
 
-var scriptVar = "000";
-var baseUrl = "www.google.com";
+// source and import environment variables
+require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
+const { baseUrl } = process.env;
 
-//require('dotenv').config({ path: '/.okta.env' })
-//const { baseUrl } = process.env;
 
 /* Protect all of the API Calls */
 function handlePublicAPICall(baseUrl, signIn) {
