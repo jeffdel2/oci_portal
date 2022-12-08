@@ -37,7 +37,7 @@ app.use(session({
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
-//import script
+//import script for api calls
 const script = require('./script.js');
 console.log(script.handlePublicAPICall);
 

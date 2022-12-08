@@ -13,6 +13,7 @@ dependencies:
   passport: 0.6.0
   passport-openidconnect: 0.1.1
   pug: 3.0.2
+  typescript: 4.9.4
   xmlhttp: 0.0.0
 packages:
   /@babel/helper-string-parser/7.18.10:
@@ -1723,6 +1724,13 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==
+  /typescript/4.9.4:
+    dev: false
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
   /u2f-api-polyfill/0.4.3:
     dev: false
     resolution:
@@ -1861,4 +1869,5 @@ specifiers:
   passport: 0.6.0
   passport-openidconnect: 0.1.1
   pug: 3.0.2
+  typescript: ^4.9.4
   xmlhttp: ^0.0.0
