@@ -30,13 +30,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'CanYouLookTheOtherWay',
   resave: false,
   saveUninitialized: true
 }));
+
+app.use('/static', (req, res) => {
+  res.render('static');
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -145,8 +148,6 @@ function getJson(url, signIn, callback) {
 ///////////////
 
 app.use('/', indexRouter);
-
-app.use('/', express.static('public'));
 
 app.use('/login', passport.authenticate('oidc'));
 
