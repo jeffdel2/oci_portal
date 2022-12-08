@@ -36,9 +36,9 @@ app.use(session({
   saveUninitialized: true
 }));
 
-
+//setup static file share
 app.use(express.static('public'));
-app.use('/support', express.static(__dirname + '/support'));
+app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
 app.use(passport.initialize());
 app.use(passport.session());

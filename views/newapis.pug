@@ -33,7 +33,7 @@ block content
   
     button.btn.btn-primary(onclick= `${handlePublicAPICall}`) Click here
     br
-    button.btn.btn-primary(href='#', type='button', onclick='something()') Hey lets try this
+    button.btn.btn-primary(href='#', type='button', onclick='handlePublicAPICall()') Hey lets try this
     
     br
     br
@@ -53,7 +53,7 @@ form.navbar-form.navbar-left(method="get", action="/profile")
 
 div.collapse
 
-script(src="https://ciam-ui.glitch.me/script.js")
+script(src="/support/blank.js")
 
 script.
   var something = function () {
