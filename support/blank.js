@@ -58,6 +58,12 @@ button.addEventListener('click', function(e) {
 });
 */
 
+function sampleFunction() {
+
+alert("This function is working!");
+
+}
+
 $('#publicButton').click(function(){
     console.log('button clicked');
     $.ajax({url: 'publicButtonURL', success:function(res){
