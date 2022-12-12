@@ -16,7 +16,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
 const { baseUrl, am_token } = process.env;
 console.log(require("dotenv").config());
 
-
+/*
 function callPrivateAPI() {
   const request = axios.get(baseUrl + "api/private", {
   headers: {
@@ -42,6 +42,8 @@ function callPublicAPI() {
   return request
   document.getElementById('request').innerHTML = request;
 }
+
+*/
 
 $('#publicButton').click(function(){
     console.log('button clicked');
