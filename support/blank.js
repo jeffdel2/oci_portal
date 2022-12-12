@@ -1,5 +1,7 @@
 /* All support JS goes here */
 
+console.log("is it loading1");
+/*
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,13 +11,15 @@ var session = require('express-session');
 var qs = require('querystring');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
+*/
+console.log("is it loading2");
 
 // source and import environment variables
-require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
+//require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
 //require('dotenv').config({ path: require('find-config')('.okta.env') })
 
-const { baseUrl, am_token } = process.env;
-console.log(require("dotenv").config());
+//const { baseUrl, am_token } = process.env;
+//console.log(require("dotenv").config());
 
 /*
 function callPrivateAPI() {
