@@ -142,14 +142,19 @@ app.use('/newapis', ensureLoggedIn, (req, res) => {
   //console.log(publicApiCall);
 });
 
+/////
 //code for API calls
+/////
 
 function publicButtonAction(res){
     res.send('ok');
 }
-app.get("/publicButton", function (req, res) {
+app.get("/publicButtonURL", function (req, res) {
     publicButtonAction(res);
+    console.log("Endpoint GET call");
 });
+
+/////
 
 app.post('/logout', (req, res, next) => {
   req.logout(err => {

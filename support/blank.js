@@ -13,6 +13,7 @@ var jwt_decode = require('jwt-decode');
 // source and import environment variables
 require('dotenv').config({ path: path.resolve(__dirname, '../.okta.env' )})
 //require('dotenv').config({ path: require('find-config')('.okta.env') })
+
 const { baseUrl, am_token } = process.env;
 console.log(require("dotenv").config());
 
@@ -44,10 +45,17 @@ function callPublicAPI() {
 }
 
 */
+console.log('Client-side code running');
+
+const button = document.getElementById('myButton');
+button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+});
+
 
 $('#publicButton').click(function(){
     console.log('button clicked');
-    $.ajax({url: 'publicButton', success:function(res){
+    $.ajax({url: 'publicButtonURL', success:function(res){
         console.log('server response is', res);
     }});
 });
