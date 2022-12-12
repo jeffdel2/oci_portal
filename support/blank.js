@@ -45,7 +45,7 @@ function callPublicAPI() {
 
 $('#publicButton').click(function(){
     console.log('button clicked');
-    $.ajax({url: 'publicEndpoint', success:function(res){
+    $.ajax({url: 'publicButton', success:function(res){
         console.log('server response is', res);
     }});
 });

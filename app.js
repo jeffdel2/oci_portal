@@ -173,6 +173,8 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
+//code for API calls
+
 function publicButtonAction(res){
     res.send('ok');
 }
