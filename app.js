@@ -172,3 +172,10 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+function publicButtonAction(res){
+    res.send('ok');
+}
+app.get("/publicButton", function (req, res) {
+    publicButtonAction(res);
+});

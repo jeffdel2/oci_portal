@@ -43,4 +43,11 @@ function callPublicAPI() {
   document.getElementById('request').innerHTML = request;
 }
 
+$('#publicButton').click(function(){
+    console.log('button clicked');
+    $.ajax({url: 'publicEndpoint', success:function(res){
+        console.log('server response is', res);
+    }});
+});
+
 
