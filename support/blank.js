@@ -9,14 +9,13 @@ button.addEventListener('click', function(e) {
 });
 */
 
-var amtoken = '<%:amtoken%>';
-var testing = "<%=testing%>";
 
 function sampleFunction() {
-
-alert("This function is working!", amtoken);
-console.log("client side token: ", amtoken);
-console.log("client side test: ", testing);
+  var test1 = "<%:test1%>";
+  var test2 = "<%:test2%>";
+  alert("Function call works");
+  console.log("client side var is: ", test1);
+  console.log("client side const is: ", test2);
 
 }
 

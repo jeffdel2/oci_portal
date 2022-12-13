@@ -16,7 +16,8 @@ const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
 var indexRouter = require('./routes/index');
 
-var testing = "is working";
+var test1 = "working";
+const test2 = "working";
 
 var app = express();
 
