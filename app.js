@@ -126,7 +126,6 @@ app.use('/authorization-code/callback',
 //Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
-  console.log("TESTING IMPORT CODE: ", script.handlePublicAPICall);
 });
 
 /////
@@ -134,7 +133,6 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
-  //console.log(publicApiCall);
 });
 
 /////

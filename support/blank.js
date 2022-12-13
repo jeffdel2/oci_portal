@@ -58,9 +58,12 @@ button.addEventListener('click', function(e) {
 });
 */
 
+var amtoken = '<%=am_token%>';
+
 function sampleFunction() {
 
-alert("This function is working!");
+alert("This function is working!", amtoken);
+console.log("client side token: ", amtoken);
 
 }
 
