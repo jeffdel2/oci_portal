@@ -16,6 +16,8 @@ const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
 var indexRouter = require('./routes/index');
 
+var testing = "is working";
+
 var app = express();
 
 // view engine setup

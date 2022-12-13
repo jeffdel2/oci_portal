@@ -10,11 +10,13 @@ button.addEventListener('click', function(e) {
 */
 
 var amtoken = '<%:amtoken%>';
+var testing = "<%=testing%>";
 
 function sampleFunction() {
 
 alert("This function is working!", amtoken);
 console.log("client side token: ", amtoken);
+console.log("client side test: ", testing);
 
 }
 
