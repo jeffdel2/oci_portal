@@ -1,6 +1,6 @@
 /* Client support JS goes here */
 
-//const axios = require('axios');
+const app = require('./app.js');
 
 //var baseUrl = "https://okta-rocks-api.glitch.me/";
 //var endpoint = "/api/private";
@@ -20,7 +20,7 @@ button.addEventListener('click', function(e) {
 
 
 function sampleFunction() {
-  var test1 = "<%:test1%>";
+  //var test1 = window.test1;
   var test2 = "<%:test2%>";
   alert("Function call works");
   console.log("client side var is: ", test1);
