@@ -166,14 +166,14 @@ function callPublicAPI() {
 
 module.exports = callPublicAPI;
 
-/////************
+/////************/////
 
 var foo = function () {
-  alert("Function call works");
+  console.log(am_token);
 };
 
-app.get('/testing', function(req, res) {
-  console.log(req.body);
+app.use('/testing', function(req, res) {
+  console.log("This website is ", req.body);
   res.send(200);
   
   foo();
