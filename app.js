@@ -164,7 +164,6 @@ function callPublicAPI() {
   document.getElementById('request').innerHTML = request;
 }  
 
-module.exports = callPublicAPI;
 
 /////************/////
 
@@ -174,14 +173,9 @@ var foo = function () {
 
 app.use('/testing', function(req, res) {
   console.log("This website is ", req.body);
-  res.send(200);
-  
+  res.sendStatus(200);
   foo();
 });
-
-
-
-
 
 
 app.post('/logout', (req, res, next) => {
