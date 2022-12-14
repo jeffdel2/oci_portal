@@ -166,13 +166,13 @@ function callPublicAPI() {
 
 module.exports = callPublicAPI;
 
-/////
+/////************
 
 var foo = function () {
   alert("Function call works");
 };
 
-app.post('/testing', function(req, res) {
+app.get('/testing', function(req, res) {
   console.log(req.body);
   res.send(200);
   
