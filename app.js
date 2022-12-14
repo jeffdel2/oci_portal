@@ -19,6 +19,8 @@ var indexRouter = require('./routes/index');
 var test1 = "working";
 const test2 = "working";
 
+module.exports = [];
+
 var app = express();
 
 // view engine setup
@@ -192,5 +194,7 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
+
 
 
