@@ -1,12 +1,12 @@
 /* Client support JS goes here */
 
-const axios = require('axios');
+//const axios = require('axios');
 
-var baseUrl = "https://okta-rocks-api.glitch.me/";
-var endpoint = "/api/private";
-var token = "1111";
+//var baseUrl = "https://okta-rocks-api.glitch.me/";
+//var endpoint = "/api/private";
+//var token = "1111";
 
-require('dotenv').config({ path: '.okta.env' })
+//require('dotenv').config({ path: '.okta.env' })
 //const { endpoint, baseUrl, token } = process.env;
 
 console.log('Client-side code running');
@@ -28,6 +28,7 @@ function sampleFunction() {
 
 }
 
+/*
 function callPublicAPI() {
   const request = axios.get(baseUrl + 'api/public')
   
@@ -38,11 +39,15 @@ function callPublicAPI() {
   return request
   document.getElementById('request').innerHTML = request;
 } 
+*/
 
 const callApi = async (baseUrl, endpoint) => {
   try {
     //const token = await auth0.getTokenSilently();
-
+    var baseUrl = "https://okta-rocks-api.glitch.me/";
+    console.log(baseUrl);
+    var endpoint = "/api/private";
+    var token = "1111";
     const response = await fetch(baseUrl + endpoint, {
       headers: {
         Authorization: `Bearer ${token}`,
