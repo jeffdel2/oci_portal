@@ -168,6 +168,16 @@ module.exports = callPublicAPI;
 
 /////
 
+app.post('/testing', (req, res) => {
+  console.log(req.body);
+  res.send(200);
+});
+
+
+
+
+
+
 app.post('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) { return next(err); }
