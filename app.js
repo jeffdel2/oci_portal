@@ -43,13 +43,8 @@ app.use(session({
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
-/////
-//import script for api calls
-//const { join } = require("path");
-//app.use(express.static(join(__dirname, "public")));
-//const script = require('./script.js');
-//console.log(script.handlePublicAPICall);
 
+//setup Okta authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
