@@ -78,7 +78,7 @@ axios
           accessToken, refreshToken, params
         }, null, 2)}\n*****`);
         id_token = idToken;
-        am_token = accessToken;
+        var am_token = accessToken;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
         return done(null, profile);
@@ -162,6 +162,8 @@ function callPublicAPI() {
   return request
   document.getElementById('request').innerHTML = request;
 }  
+
+module.exports = callPublicAPI;
 
 /////
 
