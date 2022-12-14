@@ -168,9 +168,15 @@ module.exports = callPublicAPI;
 
 /////
 
-app.post('/testing', (req, res) => {
+var foo = function () {
+  alert("Function call works");
+};
+
+app.post('/testing', function(req, res) {
   console.log(req.body);
   res.send(200);
+  
+  foo();
 });
 
 
