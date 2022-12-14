@@ -2,8 +2,12 @@
 
 const axios = require('axios');
 
+var baseUrl = "https://okta-rocks-api.glitch.me/";
+var endpoint = "/api/private";
+var token = "1111";
+
 require('dotenv').config({ path: '.okta.env' })
-const { endpoint, baseUrl, token } = process.env;
+//const { endpoint, baseUrl, token } = process.env;
 
 console.log('Client-side code running');
 
@@ -34,9 +38,6 @@ function callPublicAPI() {
   return request
   document.getElementById('request').innerHTML = request;
 } 
-
-baseUrl = "https://okta-rocks-api.glitch.me/";
-endpoint = "/api/private";
 
 const callApi = async (baseUrl, endpoint) => {
   try {
