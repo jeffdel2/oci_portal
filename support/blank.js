@@ -2,7 +2,7 @@
 const axios = require('axios');
 
 require('dotenv').config({ path: '.okta.env' })
-const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl, token } = process.env;
+const { endpoint, baseUrl, token } = process.env;
 
 console.log('Client-side code running');
 
@@ -24,7 +24,7 @@ function sampleFunction() {
 }
 
 function callPublicAPI() {
-  const request = axios.get(baseUrl + "api/public")
+  const request = axios.get(baseUrl + 'api/public')
   
   request
   .then(result => console.log('----- Inside result:', result.data))
@@ -34,11 +34,14 @@ function callPublicAPI() {
   document.getElementById('request').innerHTML = request;
 } 
 
-const callApi = async (baseURL, endpoint) => {
+baseUrl = "https://okta-rocks-api.glitch.me/";
+endpoint = "/api/private";
+
+const callApi = async (baseUrl, endpoint) => {
   try {
     //const token = await auth0.getTokenSilently();
 
-    const response = await fetch(baseURL + endpoint, {
+    const response = await fetch(baseUrl + endpoint, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -49,10 +52,12 @@ const callApi = async (baseURL, endpoint) => {
     const responseElement = document.getElementById("api-call-result");
 
     responseElement.innerText = JSON.stringify(responseData, {}, 2);
+    
+    console.log(responseData);
 
-    document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
+    //document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
 
-    eachElement(".result-block", (c) => c.classList.add("show"));
+    //eachElement(".result-block", (c) => c.classList.add("show"));
     
     location.href = "/#anchor-results";
   } catch (e) {
