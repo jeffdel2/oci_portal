@@ -1,4 +1,6 @@
 /* Client support JS goes here */
+<script type="module" src="app.js"></script>
+
 const axios = require('axios');
 
 require('dotenv').config({ path: '.okta.env' })
