@@ -1,4 +1,8 @@
 /* Client support JS goes here */
+const axios = require('axios');
+
+require('dotenv').config({ path: '.okta.env' })
+const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl, token } = process.env;
 
 console.log('Client-side code running');
 
@@ -19,9 +23,43 @@ function sampleFunction() {
 
 }
 
+function callPublicAPI() {
+  const request = axios.get(baseUrl + "api/public")
+  
+  request
+  .then(result => console.log('----- Inside result:', result.data))
+  .catch(error => console.error('----- Inside error:', error.response.data))
 
+  return request
+  document.getElementById('request').innerHTML = request;
+} 
 
+const callApi = async (baseURL, endpoint) => {
+  try {
+    //const token = await auth0.getTokenSilently();
 
+    const response = await fetch(baseURL + endpoint, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const responseData = await response.json();
+
+    const responseElement = document.getElementById("api-call-result");
+
+    responseElement.innerText = JSON.stringify(responseData, {}, 2);
+
+    document.querySelectorAll("pre code").forEach(hljs.highlightBlock);
+
+    eachElement(".result-block", (c) => c.classList.add("show"));
+    
+    location.href = "/#anchor-results";
+  } catch (e) {
+    console.error(e);
+    alert("Unable to access API or API is not configured correctly.  Check the 'baseAPIUrl' in the 'index.html' file and your glitch API app");
+  }
+};
 
 /*
 $('#publicButton').click(function(){
