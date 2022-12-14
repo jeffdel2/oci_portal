@@ -10,6 +10,10 @@
 //require('dotenv').config({ path: '.okta.env' })
 //const { endpoint, baseUrl, token } = process.env;
 
+var baseAPIUrl = "https://okta-rocks-api.glitch.me/";
+var token = "1111";
+
+
 console.log('Client-side code running');
 
 /*
@@ -21,11 +25,12 @@ button.addEventListener('click', function(e) {
 
 
 function sampleFunction() {
-  var test1 = ;
+  var test1 = "whatever";
   var test2 = "<%:test2%>";
   alert("Function call works");
   console.log("client side var is: ", test1);
   console.log("client side const is: ", test2);
+  console.log("checking local def", baseAPIUrl);
 
 }
 
@@ -44,17 +49,14 @@ function callPublicAPI() {
 
 const callApi = async (baseUrl, endpoint) => {
   try {
-    //const token = await auth0.getTokenSilently();
-    var baseUrl = "https://okta-rocks-api.glitch.me/";
-    console.log("checking", baseAPIUrl);
-    var endpoint = "/api/private";
-    var token = "1111";
-    const response = await fetch(baseUrl + endpoint, {
+    console.log("INSIDE function", baseAPIUrl);
+    const response = await fetch(baseAPIUrl + "/api/public", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
+    
+    
     const responseData = await response.json();
 
     const responseElement = document.getElementById("api-call-result");
