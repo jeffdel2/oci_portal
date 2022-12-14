@@ -150,13 +150,16 @@ app.use('/newapis', ensureLoggedIn, (req, res) => {
 //code for API calls
 /////
 
-function publicButtonAction(res){
-    res.send('ok');
-}
-app.get("/publicButtonURL", function (req, res) {
-    publicButtonAction(res);
-    console.log("Endpoint GET call");
-});
+function callPublicAPI() {
+  const request = axios.get(baseUrl + "api/public")
+  
+  request
+  .then(result => console.log('----- Inside result:', result.data))
+  .catch(error => console.error('----- Inside error:', error.response.data))
+
+  return request
+  document.getElementById('request').innerHTML = request;
+}  
 
 /////
 
