@@ -1,6 +1,7 @@
 /* Client support JS goes here */
 
-const app = require('./app.js');
+//const app = require('./app.js');
+import { app } from './app.js';
 
 //var baseUrl = "https://okta-rocks-api.glitch.me/";
 //var endpoint = "/api/private";
