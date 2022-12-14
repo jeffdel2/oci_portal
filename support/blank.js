@@ -45,7 +45,7 @@ const callApi = async (baseUrl, endpoint) => {
   try {
     //const token = await auth0.getTokenSilently();
     var baseUrl = "https://okta-rocks-api.glitch.me/";
-    console.log(baseUrl);
+    console.log("checking", baseUrl);
     var endpoint = "/api/private";
     var token = "1111";
     const response = await fetch(baseUrl + endpoint, {
