@@ -47,6 +47,17 @@ function callPublicAPI() {
 } 
 */
 
+function callPublicAPI() {
+  const request = axios.get(baseAPIUrl + "api/public")
+  
+  request
+  .then(result => console.log('----- Inside result:', result.data))
+  .catch(error => console.error('----- Inside error:', error.response.data))
+
+  return request
+  document.getElementById('request').innerHTML = request;
+}
+
 const callApi = async (baseUrl, endpoint) => {
   try {
     console.log("INSIDE function", baseAPIUrl);
