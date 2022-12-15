@@ -43,7 +43,22 @@ function callPublicAPI() {
 }
 
 function callPrivateAPI() {
-  const request = axios.get(baseURL + "api/private", {
+  const request = axios.get(baseAPIUrl + "api/private", {
+  headers: {
+    'Authorization': token
+  }
+})
+  
+  request
+  .then(result => console.log('----- Inside result:', result.data))
+  .catch(error => console.error('----- Inside error:', error.response.data))
+
+  return request
+  document.getElementById('request').innerHTML = request;
+}
+
+function callAccessAPI() {
+  const request = axios.get(baseAPIUrl + "api/access", {
   headers: {
     'Authorization': token
   }
