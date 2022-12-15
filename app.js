@@ -16,12 +16,6 @@ const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
 var indexRouter = require('./routes/index');
 
-var test1 = "working";
-var test3 = "ACTUALLY working!!!";
-const test2 = "working";
-
-module.exports = [];
-
 var app = express();
 
 // view engine setup
@@ -144,33 +138,6 @@ app.use('/newapis', ensureLoggedIn, (req, res) => {
   //console.log(publicApiCall);
 });
 
-/////
-//code for API calls
-/////
-
-function callPublicAPI() {
-  const request = axios.get(baseUrl + "api/public")
-  
-  request
-  .then(result => console.log('----- Inside result:', result.data))
-  .catch(error => console.error('----- Inside error:', error.response.data))
-
-  return request
-  document.getElementById('request').innerHTML = request;
-}  
-
-
-/////************/////
-
-var foo = function () {
-  console.log(am_token);
-};
-
-app.use('/testing', function(req, res) {
-  console.log("This website is ", req.body);
-  res.sendStatus(200);
-  foo();
-});
 
 
 app.post('/logout', (req, res, next) => {
