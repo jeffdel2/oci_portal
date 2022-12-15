@@ -9,25 +9,17 @@ block content
     br
     br
   
-    button.btn.btn-primary(onclick=`${publicApiCall}`)
+    button.btn.btn-primary(type='button', onclick='callPublicAPI()') Test Public API
 
     br
     br
-  
-    a(href=`${apiurl}`+"api/public")
-      button.btn.btn-primary Test Public API
+    
+    button.btn.btn-primary(type='button', onclick='callPrivateAPI()') Test Private API
     
     br
     br
     
-    a(href=`${apiurl}`+"api/private")
-      button.btn.btn-primary Test Private API
-    
-    br
-    br
-    
-    a(href=`${apiurl}`+"api/access")
-      button.btn.btn-primary Test Access API
+    button.btn.btn-primary(type='button', onclick='callAccessAPI()') Test Access API
   
   br
   br
@@ -35,12 +27,9 @@ block content
   br
   br
   div.b
-  kbd#name(cont='demo')
+  kbd#request
     br
     br
     br
   form.navbar-form.navbar-left(method="get", action="/profile")
       button#logout-button.btn.btn-primary(type="submit") Back to the profile page
-      
-script.
-    <button onclick=`${handlePublicAPICall}`>Click this one here</button>
