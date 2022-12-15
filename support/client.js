@@ -35,7 +35,7 @@ function callPublicAPI() {
   const request =  axios.get(baseAPIUrl + "api/public")
   
   request
-  .then(result => document.getElementById('request').innerHTML = result)
+  .then(result => console.log('----- Inside result:', result.data))
   .catch(error => console.error('----- Inside error:', error.response.data))
   document.getElementById('request').innerHTML = request
 
@@ -52,7 +52,7 @@ function callPrivateAPI() {
   request
   .then(result => console.log('----- Inside result:', result.data) )
   .catch(error => console.error('----- Inside error:', error.response.data))
-  document.getElementById('request').innerHTML = result.data
+  document.getElementById('request').innerHTML = request
   
   return request
 }
