@@ -33,7 +33,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-//setup static file share
+//setup static file share as well as client side JS
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
@@ -129,15 +129,6 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
 });
-
-/////
-// Add page to test api endpoints new methods
-app.use('/newapis', ensureLoggedIn, (req, res) => {
-  res.render('newapis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
-  console.log(baseUrl);
-  //console.log(publicApiCall);
-});
-
 
 
 app.post('/logout', (req, res, next) => {
