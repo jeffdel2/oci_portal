@@ -1,8 +1,6 @@
 /* Client support JS goes here */
 
-//const {app} = require('./app.js');
-
-//console.log("Access token: ", app.am_token);
+var am_token = <%:am_token%>;
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 var token = $(am_token);
