@@ -36,11 +36,8 @@ function callPublicAPI() {
   const request =  axios.get(baseAPIUrl + "api/public")
   
   request
-  .then(result => console.log('----- Inside result:', result.data))
-  document.getElementById('request').innerHTML = JSON.stringify(request)
-  //.then(result => apiResponse(result.data))
-  .catch(error => console.error('----- Inside error:', error.response.data))
-  
+  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data))
+  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data))
 
   return request
 }
@@ -53,9 +50,8 @@ function callPrivateAPI() {
 })
   
   request
-  .then(result => console.log('----- Inside result:', result.data) )
-  .catch(error => console.error('----- Inside error:', error.response.data))
-  document.getElementById('request').innerHTML = request
+  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data))
+  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data))
   
   return request
 }
@@ -68,9 +64,8 @@ function callAccessAPI() {
 })
   
   request
-  .then(result => console.log('----- Inside result:', result.data))
-  .catch(error => console.error('----- Inside error:', error.response.data))
-  document.getElementById('request').innerHTML = request
+  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data))
+  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data))
 
   return request
 }
