@@ -3,9 +3,6 @@
 //const app = require('./app.js');
 //import { app } from './app.js';
 
-//var baseUrl = "https://okta-rocks-api.glitch.me/";
-//var endpoint = "/api/private";
-//var token = "1111";
 
 //require('dotenv').config({ path: '.okta.env' })
 //const { endpoint, baseUrl } = process.env;
