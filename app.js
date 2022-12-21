@@ -91,6 +91,7 @@ passport.deserializeUser((obj, next) => {
   next(null, obj);
 });
 
+
 function ensureLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -128,6 +129,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
+  console.log("Can see the access token: ", am_token);
 });
 
 

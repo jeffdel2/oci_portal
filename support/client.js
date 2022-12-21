@@ -5,7 +5,7 @@
 //console.log("Access token: ", app.am_token);
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
-var token = amtoken;
+var token = $(am_token);
 
 
 console.log('Client-side code');
