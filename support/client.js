@@ -32,12 +32,14 @@ Implement API calls
 */
 
 function callPublicAPI() {
+  //const apiResponse = ""
   const request =  axios.get(baseAPIUrl + "api/public")
   
   request
   .then(result => console.log('----- Inside result:', result.data))
+  //.then(result => apiResponse(result.data))
   .catch(error => console.error('----- Inside error:', error.response.data))
-  document.getElementById('request').innerHTML = request
+  document.getElementById('request').innerHTML = JSON.stringify(request)
 
   return request
 }
