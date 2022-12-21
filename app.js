@@ -130,6 +130,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   console.log("Can see the access token: ", am_token);
+  document.cookie = "token=am_token; path=/";
 });
 
 

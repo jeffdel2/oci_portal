@@ -1,6 +1,6 @@
 /* Client support JS goes here */
 
-var token = amtoken
+var token = "1111";
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 
