@@ -37,9 +37,10 @@ function callPublicAPI() {
   
   request
   .then(result => console.log('----- Inside result:', result.data))
+  document.getElementById('request').innerHTML = JSON.stringify(request)
   //.then(result => apiResponse(result.data))
   .catch(error => console.error('----- Inside error:', error.response.data))
-  document.getElementById('request').innerHTML = JSON.stringify(request)
+  
 
   return request
 }
