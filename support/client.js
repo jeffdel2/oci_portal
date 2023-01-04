@@ -4,18 +4,17 @@
 //var amtoken = amtoken;
 //var client_token = "<%:client_token%>";
 
-
-function getCookie(amtoken) {
+let value;
+function getCookie(token) {
   const value = `; ${document.cookie}`;
   console.log("trying to get cookie value: ",value);
   //const parts = value.split(`; ${name}=`);
   //if (parts.length === 2) return parts.pop().split(';').shift();
 }
 
-
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 
-console.log("Client side token: ", amtoken)
+console.log("Client side token: ", value)
 //var token = $(am_token);
 
 
@@ -68,7 +67,7 @@ function callAccessAPI() {
 Get cookie
 */
 
-function getCookie(name) {
+/*function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
@@ -77,7 +76,8 @@ function getCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
-}
+}*/
+
 function eraseCookie(name) {   
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
