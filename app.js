@@ -118,12 +118,13 @@ app.use('/authorization-code/callback',
   }
 );
 
+
 //Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
 });
 
-/////
+
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.cookie('token', am_token);
