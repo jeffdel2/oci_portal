@@ -1,10 +1,11 @@
 /* Client support JS goes here */
 
 var token = "1111";
+var client_token = "<%:client_token%>";
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 
-console.log("Client side token: ", token)
+console.log("Client side token: ", client_token)
 //var token = $(am_token);
 
 
