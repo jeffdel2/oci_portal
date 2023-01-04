@@ -1,8 +1,17 @@
 /* Client support JS goes here */
 
 //var token = "1111";
-var amtoken = amtoken;
-var client_token = "<%:client_token%>";
+//var amtoken = amtoken;
+//var client_token = "<%:client_token%>";
+
+
+function getCookie(amtoken) {
+  const value = `; ${document.cookie}`;
+  console.log("trying to get cookie value: ",value);
+  //const parts = value.split(`; ${name}=`);
+  //if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 
