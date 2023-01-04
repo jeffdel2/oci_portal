@@ -127,7 +127,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
-  res.cookie('token', am_token, { maxAge: 900000, httpOnly: true, sameSite: 'strict' });
+  res.cookie('token', am_token);
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
 });
