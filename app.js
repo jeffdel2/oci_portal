@@ -110,8 +110,6 @@ function setCookie(name,decoded_am_token,days) {
     document.cookie = name + "=" + (decoded_am_token || "")  + expires + "; path=/";
 }
 
-
-
 ///////////////
 ////
 //add endpoints
