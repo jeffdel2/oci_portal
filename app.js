@@ -130,7 +130,8 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
-  res.cookie('name', 'express').send('cookie set');
+  res.cookie('AMTOKEN', am_token);
+  res.send(req.cookies);
 });
 
 
