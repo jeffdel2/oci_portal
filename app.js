@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
@@ -91,7 +92,6 @@ passport.deserializeUser((obj, next) => {
   next(null, obj);
 });
 
-
 function ensureLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -140,8 +140,6 @@ app.use('/apis', ensureLoggedIn, (req, res, next) => {
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
-  req.cookie('cookieName','testing');
-  req.send;
 });
 
 
