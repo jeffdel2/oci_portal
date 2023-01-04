@@ -126,12 +126,11 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 /////
 // Add page to test api endpoints
 app.use('/apis', ensureLoggedIn, (req, res) => {
+  res.cookie('token', am_token);
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
-  res.cookie('AMTOKEN', am_token);
-  res.send(req.cookies);
 });
 
 

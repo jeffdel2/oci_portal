@@ -1,6 +1,6 @@
 /* Client support JS goes here */
 
-var token = "1111";
+//var token = "1111";
 var amtoken = amtoken;
 var client_token = "<%:client_token%>";
 
