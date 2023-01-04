@@ -4,6 +4,11 @@
 //var amtoken = amtoken;
 //var client_token = "<%:client_token%>";
 
+const cookieValue = document.cookie
+  .split('; ')
+  .find((row) => row.startsWith('token='))
+  ?.split('=')[1];
+
 let value;
 function getCookie(token) {
   const value = `; ${document.cookie}`;
@@ -14,7 +19,7 @@ function getCookie(token) {
 
 var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
 
-console.log("Client side token: ", value)
+console.log("Client side token: ", cookieValue)
 //var token = $(am_token);
 
 
@@ -36,9 +41,10 @@ function callPublicAPI() {
 }
 
 function callPrivateAPI() {
+  
   const request = axios.get(baseAPIUrl + "api/private", {
   headers: {
-    'Authorization': token
+    'Authorization': document.cookie.token
   }
 })
   
@@ -46,6 +52,7 @@ function callPrivateAPI() {
   .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data))
   .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data))
   
+  console.log("Testing private call with cookie: ", document.cookie.AMTOKEN);
   return request
 }
 
