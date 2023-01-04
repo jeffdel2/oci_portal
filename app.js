@@ -100,6 +100,17 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
+function setCookie(name,decoded_am_token,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (decoded_am_token || "")  + expires + "; path=/";
+}
+
+
 
 ///////////////
 ////
@@ -131,6 +142,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
+  document.cookie = name + "=" + (decoded_am_token || "") + "; path=/";
 });
 
 
