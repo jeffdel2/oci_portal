@@ -140,7 +140,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
-  document.cookie = name + "=" + (decoded_am_token || "") + "; path=/";
+  res.cookie('cookieName',client_token, { maxAge: 900000, httpOnly: true });
 });
 
 
