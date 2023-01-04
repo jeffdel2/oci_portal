@@ -2,7 +2,6 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
@@ -100,15 +99,6 @@ function ensureLoggedIn(req, res, next) {
   res.redirect('/login')
 }
 
-function setCookie(name,decoded_am_token,days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (decoded_am_token || "")  + expires + "; path=/";
-}
 
 ///////////////
 ////
@@ -135,11 +125,12 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 
 /////
 // Add page to test api endpoints
-app.use('/apis', ensureLoggedIn, (req, res, next) => {
+app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
   console.log(baseUrl);
   var client_token = am_token;
   console.log("Can see the access token: ", client_token);
+  res.cookie('name', 'express').send('cookie set');
 });
 
 
