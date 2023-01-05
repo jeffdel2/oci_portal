@@ -14,8 +14,6 @@ Set API base URL
 */
 var baseAPIUrl = "https://authrocks-cis-api-template.glitch.me/"; // This is the base URL of the API Application
 
-console.log('Client-side code');
-
 
 /*
 Implement API calls
@@ -48,6 +46,7 @@ function callPrivateAPI() {
 }
 
 function callAccessAPI() {
+  
   const request = axios.get(baseAPIUrl + "api/access", {
   headers: {
     'Authorization': cookieValue
