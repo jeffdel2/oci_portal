@@ -22,9 +22,7 @@ It is part of the Auth Rocks developer workshop presented by [Okta](https://okta
 
 1. Copy the {API_AUDIENCE} from the API create in your tenant and paste in the **auth_config.json** file.
 
-2. Copy the URL from the Glitch API app and paste in `var baseAPIUrl = "Enter Glitch API URL here";` (around line 291) in **index.html**
-
-3. Uncomment `audience: config.audience` (around line 55) in **/public/js/app.js**.
+2. Copy the URL from the Glitch API app and paste in `var baseAPIUrl = "Enter Glitch API URL here";` (on line 15) in **support/client.js**
 
 
 ---

@@ -10,7 +10,7 @@ var { Strategy } = require('passport-openidconnect');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
 
-// source and import environment variables
+// Source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
 const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
 
@@ -18,7 +18,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 
-// view engine setup
+// View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
@@ -33,12 +33,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
-//setup static file share as well as client side JS
+// Setup static file share as well as client side JS
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
 
 
-//setup Okta authentication
+// Setup Okta authentication
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -100,18 +100,15 @@ function ensureLoggedIn(req, res, next) {
 }
 
 
-///////////////
-////
-//add endpoints
-////
-///////////////
+//
+// Add endpoints
+
 
 app.use('/', indexRouter);
 
 app.use('/login', passport.authenticate('oidc'));
 
 app.use('/authorization-code/callback',
-  // https://github.com/jaredhanson/passport/issues/458
   passport.authenticate('oidc', { failureMessage: true, failWithError: true }),
   (req, res) => {
     res.redirect('/profile');
@@ -119,13 +116,13 @@ app.use('/authorization-code/callback',
 );
 
 
-//Add page to review basic profile data and JWT tokens
+// Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
 });
 
 
-// Add page to test api endpoints
+// Add endpoint to test api calls
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.cookie('token', am_token);
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
@@ -133,6 +130,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 });
 
 
+// Add logout endpoint
 app.post('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) { return next(err); }
@@ -144,12 +142,12 @@ app.post('/logout', (req, res, next) => {
   });
 });
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message + (err.code && ' (' + err.code + ')' || '') +
