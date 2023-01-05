@@ -12,7 +12,7 @@ var jwt_decode = require('jwt-decode');
 
 // Source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
-const { ORG_URL, CLIENT_ID, CLIENT_SECRET, baseUrl } = process.env;
+const { ORG_URL, CLIENT_ID, CLIENT_SECRET } = process.env;
 
 var indexRouter = require('./routes/index');
 
@@ -125,8 +125,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
 // Add endpoint to test api calls
 app.use('/apis', ensureLoggedIn, (req, res) => {
   res.cookie('token', am_token);
-  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token, baseUrl: baseUrl });
-  console.log(baseUrl);
+  res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
 });
 
 
@@ -136,7 +135,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'https://okta-rocks-ui.glitch.me/'
+      post_logout_redirect_uri: 'https://authrocks-cis-ui-template.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
@@ -160,7 +159,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-
-
-
-

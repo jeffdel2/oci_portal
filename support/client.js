@@ -12,7 +12,7 @@ const cookieValue = document.cookie
 /*
 Set API base URL
 */
-var baseAPIUrl = "https://okta-rocks-api.glitch.me/"; // This is the base URL of the API Application
+var baseAPIUrl = "https://authrocks-cis-api-template.glitch.me/"; // This is the base URL of the API Application
 
 console.log('Client-side code');
 
@@ -22,7 +22,7 @@ Implement API calls
 */
 
 function callPublicAPI() {
-  //const apiResponse = ""
+  
   const request =  axios.get(baseAPIUrl + "api/public")
   
   request
