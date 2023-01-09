@@ -44,7 +44,7 @@ app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
 let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2;
-console.log("this is the org", ORG_URL);
+console.log("this is the org", window.location.hostname);
 let _base = ORG_URL.slice(-1) == '/' ? ORG_URL.slice(0, -1) : ORG_URL;
 axios
   .get(`${_base}/oauth2/default/.well-known/oauth-authorization-server`)
