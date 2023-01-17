@@ -135,7 +135,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'https://authrocks-cis-ui-template.glitch.me/'
+      post_logout_redirect_uri: 'https://ui-pumped-proximal-drill.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
