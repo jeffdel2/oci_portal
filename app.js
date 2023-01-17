@@ -44,7 +44,7 @@ app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
 let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2;
-let _base = WELL_KNOWN.slice(-1) == '/' ? WELL_KNOWN.slice(0, -1) : WELL_KNOWN;
+let _base = WELL_KNOWN_ENDPOINT.slice(-1) == '/' ? WELL_KNOWN_ENDPOINT.slice(0, -1) : WELL_KNOWN;
 axios
   .get(`${_base}`)
   .then(res => {
