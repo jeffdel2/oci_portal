@@ -12,7 +12,7 @@ const cookieValue = document.cookie
 /*
 Set API base URL
 */
-var baseAPIUrl = "https://authrocks-cis-api-template.glitch.me/"; // This is the base URL of the API Application
+var baseAPIUrl = "www.example.com"; // This is the base URL of the API Application
 
 
 /*
