@@ -12,7 +12,7 @@ const cookieValue = document.cookie
 /*
 Set API base URL
 */
-var baseAPIUrl = "www.example.com"; // This is the base URL of the API Application
+var baseAPIUrl = "YOUR_API_URL_HERE"; // This is the base URL of the API Application
 
 
 /*
