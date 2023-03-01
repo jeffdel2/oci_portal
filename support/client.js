@@ -12,7 +12,7 @@ const cookieValue = document.cookie
 /*
 Set API base URL
 */
-var baseAPIUrl = "YOUR_API_URL_HERE"; // This is the base URL of the API Application
+var baseAPIUrl = "https://api-acoustic-possible-raptorex.glitch.me/"; // This is the base URL of the API Application
 
 
 /*
