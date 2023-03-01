@@ -44,16 +44,13 @@ app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest
 let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2;
-console.log("here is the first WKE: ",WELL_KNOWN_ENDPOINT);
 let _base = WELL_KNOWN_ENDPOINT.slice(-1) == '/' ? WELL_KNOWN_ENDPOINT.slice(0, -1) : WELL_KNOWN_ENDPOINT;
-console.log("here is the base WKE: ",_base);
 axios
   .get(`${_base}`)
   .then(res => {
     if (res.status == 200) {
       let { issuer, authorization_endpoint, token_endpoint, userinfo_endpoint, end_session_endpoint } = res.data;
       logout_url = end_session_endpoint;
-      console.log(res.data);
       // Set up passport
       passport.use('oidc', new Strategy({
         issuer,
