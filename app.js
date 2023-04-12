@@ -52,6 +52,7 @@ axios
       let { issuer, authorization_endpoint, token_endpoint, userinfo_endpoint, end_session_endpoint } = res.data;
       logout_url = end_session_endpoint;
       // Set up passport
+      console.log(res.data);
       passport.use('oidc', new Strategy({
         issuer,
         authorizationURL: authorization_endpoint,
