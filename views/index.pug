@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  h2= "Welcome to AuthRocks!"
+  h2= "Welcome to the Login UI!"
   if authenticated
     br
     div
       p Welcome back!
-      p You have successfully authenticated against your Okta org, and have been redirected back to this application.
+      p You have successfully authenticated with Okta CIS, and have been redirected back to this application.
       p Visit the #[a(href="/profile") My Profile] page in this application to view the information retrieved with your OAuth Access Token.
   else
     br
