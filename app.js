@@ -61,7 +61,7 @@ axios
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         callbackURL: 'https://ui-pumped-proximal-drill.glitch.me/authorization-code/callback',
-        scope: 'profile offline_access phone',
+        scope: 'profile offline_access phone state',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
