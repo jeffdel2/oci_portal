@@ -45,6 +45,21 @@ function callPrivateAPI() {
   return request
 }
 
+function callAccessGroupsAPI() {
+  
+  const request = axios.get(baseAPIUrl + "api/groups", {
+  headers: {
+    'Authorization': cookieValue
+  }
+})
+  
+  request
+  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data, null, 4))
+  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data, null, 4))
+  
+  return request
+}
+
 function callAccessAPI() {
   
   const request = axios.get(baseAPIUrl + "api/access", {
