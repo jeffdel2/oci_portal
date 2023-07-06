@@ -60,8 +60,8 @@ axios
         userInfoURL: userinfo_endpoint,
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
-        callbackURL: 'https://ui-pumped-proximal-drill.glitch.me/authorization-code/callback',
-        scope: 'profile offline_access phone state',
+        callbackURL: 'https://acme-sso.glitch.me/authorization-code/callback',
+        scope: 'profile offline_access phone',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
@@ -135,7 +135,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'https://ui-pumped-proximal-drill.glitch.me/'
+      post_logout_redirect_uri: 'https://acme-sso.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
