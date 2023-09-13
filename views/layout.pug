@@ -23,8 +23,10 @@ html
           form.navbar-form.navbar-right(method="post", action="/logout")
             button#logout-button.btn.btn-danger(type="submit") Logout
         else
+          form.navbar-form.navbar-right(method="get", action="/register")
+            button#login-button.btn.btn-primary(type="submit") Register
           form.navbar-form.navbar-right(method="get", action="/login")
-            button#login-button.btn.btn-primary(type="submit") Login           
+            button#login-button.btn.btn-primary(type="submit") Login
     div#content.container
     
       block content
