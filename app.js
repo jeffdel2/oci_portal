@@ -134,10 +134,10 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 
 // Add register endpoint
 app.post('/submitreg', (req, res) => {
-  console.log("TESTING REG", req.body.name);
   const name = req.body.name;
   const email = req.body.email;
   const age = req.body.age;
+  console.log("TESTING REG", res);
 });
 
 // Add logout endpoint
