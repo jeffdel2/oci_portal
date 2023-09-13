@@ -132,6 +132,13 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
 });
 
+// Add register endpoint
+app.post('/submitreg', (req, res) => {
+  console.log("TESTING REG", req.body.name);
+  const name = req.body.name;
+  const email = req.body.email;
+  const age = req.body.age;
+});
 
 // Add logout endpoint
 app.post('/logout', (req, res, next) => {
