@@ -12,6 +12,8 @@ var jwt_decode = require('jwt-decode');
 
 // Source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
+require('dotenv').config({ path: '.env' })
+console.log("TEST",tokenValue)
 const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET } = process.env;
 
 var indexRouter = require('./routes/index');
@@ -134,9 +136,9 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
 
 // Add register endpoint
 app.post('/submitreg', (req, res) => {
-  const name = req.body.name;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
   const email = req.body.email;
-  const age = req.body.age;
   console.log("TESTING REG", res);
 });
 

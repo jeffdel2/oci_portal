@@ -85,7 +85,7 @@ function callRegAPI() {
   
   const request = axios.post(baseOktaUrl + "api/v1/users?activate=false", {
   headers: {
-    'Authorization': 'SSWS'tokenValue
+    'Authorization': 'SSWS'+tokenValue
   }
 })
   

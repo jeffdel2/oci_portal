@@ -7,18 +7,18 @@ block content
     p Fill out the following to register for access to Acme
     
     form(action="/submitreg", method="POST")
-    label(for="name") Name:
-    input(type="text", name="name", id="name")
+    label(for="firstname") First Name:
+    input(type="text", name="firstname", id="firstname")
+
+    br
+    
+    label(for="lastname") Last Name:
+    input(type="text", name="lastname", id="lastname")
 
     br
 
     label(for="email") Email:
     input(type="email", name="email", id="email")
-
-    br
-
-    label(for="age") Age:
-    input(type="number", name="age", id="age")
 
     br
 
