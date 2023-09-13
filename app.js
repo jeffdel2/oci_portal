@@ -121,6 +121,10 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
 });
 
+// Add endpoint to test api calls
+app.use('/register', (req, res) => {
+  res.render('register');
+});
 
 // Add endpoint to test api calls
 app.use('/apis', ensureLoggedIn, (req, res) => {
