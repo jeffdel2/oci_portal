@@ -13,7 +13,6 @@ var jwt_decode = require('jwt-decode');
 // Source and import environment variables
 require('dotenv').config({ path: '.okta.env' })
 require('dotenv').config({ path: '.env' })
-console.log("TEST",tokenValue)
 const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET } = process.env;
 
 var indexRouter = require('./routes/index');
