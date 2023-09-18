@@ -10,6 +10,7 @@ var qs = require('querystring');
 var { Strategy } = require('passport-openidconnect');
 const axios = require('axios');
 var jwt_decode = require('jwt-decode');
+var request = require('request');
 
 // Source and import environment variables
 //require('dotenv').config({ path: '.okta.env' })
@@ -141,11 +142,16 @@ app.post('/submit', (req, res) => {
   const lastname = req.body.lastname;
   const email = req.body.email;
   const reg_url = "https://acme-sso.glitch.me/register";
-  res.redirect(reg_url);
+  //res.redirect(reg_url);
   console.log("TESTING REG", req.body);
-  const request = axios.post(ORG_URL + "/api/v1/users?activate=false&sendEmail=false", {
-  headers: {
-    'Authorization': 'SSWS'+ TOKEN_VALUE
+  
+  var options = {
+  'method': 'POST',
+  'url': ORG_URL+'/api/v1/users?activate=true&sendEmail=false',
+  'headers': {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'SSWS '+TOKEN_VALUE
   },
   body: JSON.stringify({
     "profile": {
@@ -155,13 +161,15 @@ app.post('/submit', (req, res) => {
       "login": email
     }
   })
-})
+
+}
   
   request(options, function (error, response) {
   if (error) throw new Error(error);
   console.log(response.body);
+  })
+  res.redirect(reg_url);
 });
-
 
 
 // Add logout endpoint
