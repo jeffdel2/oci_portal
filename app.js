@@ -141,6 +141,7 @@ app.post('/submit', (req, res) => {
   const lastname = req.body.lastname;
   const email = req.body.email;
   const reg_url = "https://acme-sso.glitch.me/register";
+  res.redirect(reg_url);
   console.log("TESTING REG", req.body);
   const request = axios.post(ORG_URL + "api/v1/users?activate=false", {
   headers: {
@@ -149,12 +150,12 @@ app.post('/submit', (req, res) => {
 })
   
   request
-  .then(result => console.log(JSON.stringify(result.data, null, 4)))
-  .catch(error => console.log(JSON.stringify(result.data, null, 4)))
+  console.log("THE API REQUEST",request)
+  .then(result => console.log("RESULT",JSON.stringify(result.data, null, 4)))
+  .catch(error => console.log("ERROR",JSON.stringify(error.data, null, 4)))
   
   return request
-}
-  res.redirect(reg_url);
+
 });
 
 function callRegAPI() {
