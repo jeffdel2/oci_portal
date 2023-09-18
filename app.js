@@ -14,7 +14,7 @@ var jwt_decode = require('jwt-decode');
 // Source and import environment variables
 //require('dotenv').config({ path: '.okta.env' })
 require('dotenv').config({ path: '.env' })
-const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET } = process.env;
+const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET, TOKEN_VALUE } = process.env;
 
 var indexRouter = require('./routes/index');
 
@@ -144,6 +144,23 @@ app.post('/submit', (req, res) => {
   console.log("TESTING REG", req.body);
   res.redirect(reg_url);
 });
+
+function callRegAPI() {
+  
+  console.log("Call works");
+  const request = axios.post(baseOktaUrl + "api/v1/users?activate=false", {
+  headers: {
+    'Authorization': 'SSWS'+ TOKEN_VALUE
+  }
+})
+  
+  request
+  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data, null, 4))
+  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data, null, 4))
+  
+  return request
+}
+
 
 // Add logout endpoint
 app.post('/logout', (req, res, next) => {
