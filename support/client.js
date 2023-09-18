@@ -13,7 +13,6 @@ const cookieValue = document.cookie
 Set API base URL
 */
 var baseAPIUrl = "https://acme-api.glitch.me/"; // This is the base URL of the API Application
-var baseOktaUrl = "https://jsd.okta.com/"; // This is the base URL of the Okta tenant
 
 
 /*
