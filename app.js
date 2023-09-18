@@ -12,7 +12,7 @@ const axios = require('axios');
 var jwt_decode = require('jwt-decode');
 
 // Source and import environment variables
-require('dotenv').config({ path: '.okta.env' })
+//require('dotenv').config({ path: '.okta.env' })
 require('dotenv').config({ path: '.env' })
 const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET } = process.env;
 
