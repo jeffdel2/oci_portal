@@ -141,7 +141,7 @@ app.post('/submit', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;
-  const reg_url = "https://acme-sso.glitch.me/register";
+  const reg_url = "https://acme-sso.glitch.me/";
   
   var options = {
   'method': 'POST',
@@ -149,7 +149,7 @@ app.post('/submit', (req, res) => {
   'headers': {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'SSWS'+TOKEN_VALUE
+    'Authorization': 'SSWS '+TOKEN_VALUE
   },
   body: JSON.stringify({
     "profile": {
@@ -162,10 +162,11 @@ app.post('/submit', (req, res) => {
 
 }
   request(options, function (error, response) {
-  console.log("REQUEST",response);
   if (error) throw new Error(error);
+    else (
+    console.log("SUCCESS"));
+    res.redirect(reg_url);
   })
-  res.redirect(reg_url);
 });
 
 
