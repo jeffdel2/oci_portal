@@ -1,13 +1,13 @@
-body {
+body.old {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+a.old {
   color: #00B7FF;
 }
 
-btn {
+btn.old {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -18,29 +18,29 @@ btn {
   font-size: 20px;
 }
 
-button{
+button.old{
   background-color: #4CAF50;
 }
 
-btn:hover{
+btn:hover.old{
   border-left: 3px solid blue;
 }
 
-div.a{
+div.a.old{
   float: left;
   width: 50%;
 }
 
-div.b{
+div.b.old{
   float: right;
   width: 50%;
 }
 
-nav.navbar.navbar-default {
+nav.navbar.navbar-default.old {
   background-color: blue;
 }
 
-container-fluid {
+container-fluid.old {
   background-color: blue;
 }
 

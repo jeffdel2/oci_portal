@@ -40,6 +40,7 @@ app.use(session({
 // Setup static file share as well as client side JS
 app.use(express.static('public'));
 app.use('/support', express.static(path.resolve(__dirname + '/support')));
+app.use('/public', express.static(path.resolve(__dirname + '/public')));
 
 
 // Setup Okta authentication
