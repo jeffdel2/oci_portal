@@ -143,36 +143,25 @@ app.post('/submit', (req, res) => {
   const reg_url = "https://acme-sso.glitch.me/register";
   res.redirect(reg_url);
   console.log("TESTING REG", req.body);
-  const request = axios.post(ORG_URL + "api/v1/users?activate=false", {
+  const request = axios.post(ORG_URL + "/api/v1/users?activate=false&sendEmail=false", {
   headers: {
     'Authorization': 'SSWS'+ TOKEN_VALUE
-  }
+  },
+  body: JSON.stringify({
+    "profile": {
+      "firstName": firstname,
+      "lastName": lastname,
+      "email": email,
+      "login": email
+    }
+  })
 })
   
-  request
-  console.log("THE API REQUEST",request)
-  .then(result => console.log("RESULT",JSON.stringify(result.data, null, 4)))
-  .catch(error => console.log("ERROR",JSON.stringify(error.data, null, 4)))
-  
-  return request
-
+  request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
 });
 
-function callRegAPI() {
-  
-  console.log("Call works");
-  const request = axios.post(ORG_URL + "api/v1/users?activate=false", {
-  headers: {
-    'Authorization': 'SSWS'+ TOKEN_VALUE
-  }
-})
-  
-  request
-  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data, null, 4))
-  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data, null, 4))
-  
-  return request
-}
 
 
 // Add logout endpoint
