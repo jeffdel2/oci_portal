@@ -140,7 +140,9 @@ app.post('/submit', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;
-  console.log("TESTING REG", req);
+  const reg_url = "https://acme-sso.glitch.me/register";
+  console.log("TESTING REG", req.body);
+  res.redirect(reg_url);
 });
 
 // Add logout endpoint
