@@ -3,6 +3,7 @@ extends layout
 block content
   h2= "Acme Registration"
   br
+  br
   div.col-xs-6
     p Fill out the following to register for access to Acme
     
@@ -22,9 +23,7 @@ block content
       input(type="email", name="email", id="email")
 
       br
-
-      input(type="submit", value="Submit")
+      br
       
-      button.btn.btn-primary(type='submit', value="Submit") 
+      button.btn.btn-primary(type='submit', value="Submit") Click here to Register
       
-      button.btn.btn-primary(type='button', onclick='callRegAPI()') Register
