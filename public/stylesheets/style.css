@@ -55,3 +55,14 @@ input.input-custom {
 .navbar-form {
   margin-top: 30px !important;
 }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333; /* Set your desired background color */
+  color: #fff; /* Set your desired text color */
+  text-align: center;
+  padding: 5px 0; /* Add padding for spacing */
+}
