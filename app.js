@@ -126,7 +126,7 @@ app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
 });
 
-// Add endpoint to test api calls
+// Add endpoint for end user registration
 app.use('/register', (req, res) => {
   res.render('register');
 });
@@ -137,7 +137,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
 });
 
-// Add register endpoint
+// Add submit endpoint for self 
 app.post('/submit', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
@@ -171,6 +171,11 @@ app.post('/submit', (req, res) => {
     console.log("SUCCESS"));
     res.redirect(reg_url);
   })
+});
+
+// Add endpoint for end user registration
+app.use('/factors', (req, res) => {
+  res.render('factors');
 });
 
 
