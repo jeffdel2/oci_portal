@@ -174,7 +174,7 @@ app.post('/submit', (req, res) => {
 });
 
 // Add endpoint for end user registration
-app.use('/factors', (req, res) => {
+app.use('/factors', ensureLoggedIn, (req, res) => {
   res.render('factors');
 });
 
