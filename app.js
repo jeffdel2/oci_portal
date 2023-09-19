@@ -158,7 +158,10 @@ app.post('/submit', (req, res) => {
       "lastName": lastname,
       "email": email,
       "login": email
-    }
+    },
+  "groupIds": [
+    "00g7qpj0v7Nlu0fjC697"
+  ]
   })
 
 }
