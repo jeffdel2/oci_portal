@@ -137,7 +137,7 @@ app.use('/apis', ensureLoggedIn, (req, res) => {
   res.render('apis', { authenticated: req.isAuthenticated(), user: req.user, idtoken: id_token, amtoken: am_token });
 });
 
-// Add submit endpoint for self 
+// Add submit endpoint for self reg
 app.post('/submit', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
@@ -176,6 +176,24 @@ app.post('/submit', (req, res) => {
 // Add endpoint for end user registration
 app.use('/factors', (req, res) => {
   res.render('factors');
+});
+
+// Add submit endpoint for factors api
+app.post('/getfactors', (req, res) => {
+  var request = require('request');
+  var options = {
+  'method': 'GET',
+  'url': ORG_URL+'/api/v1/users/00u54o5dv7JM8CVzE697/factors',
+  'headers': {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'SSWS '+TOKEN_VALUE,
+  }
+}
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log("FACTORS",response.body);
+  })
 });
 
 
