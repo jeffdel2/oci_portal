@@ -7,14 +7,11 @@ block content
   div.col-xs-6
     p Use this page to review factors availble for your login
     
-    form(method="post", action="/getfactors")
+    br
     
-      
-      button.btn.btn-primary(type='submit', value="Submit") List Factors
-      br
-      button.btn.btn-primary(type='button', onclick='callgetPhones()') Get MyAccount Phones
+    button.btn.btn-primary(type='button', onclick='callgetPhones()') Get MyAccount Phones
   
-  h5= "MyAccount Info:"
+  h5="MyAccount Info:"
   <pre class="rounded"><code class="json">
   div#myAccountResult
   </code></pre>

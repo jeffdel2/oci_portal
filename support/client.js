@@ -87,8 +87,8 @@ function callgetPhones() {
 })
   
   request
-  .then(result => document.getElementById('apiResult').innerHTML = JSON.stringify(result.data, null, 4))
-  .catch(error => document.getElementById('apiResult').innerHTML = JSON.stringify(error.response.data, null, 4))
+  .then(result => document.getElementById('myAccountResult').innerHTML = JSON.stringify(result.data, null, 4))
+  .catch(error => document.getElementById('myAccountResult').innerHTML = JSON.stringify(error.response.data, null, 4))
 
   return request
 }
