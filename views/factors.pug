@@ -11,3 +11,10 @@ block content
     
       
       button.btn.btn-primary(type='submit', value="Submit") List Factors
+      br
+      button.btn.btn-primary(type='button', onclick='getPhones()') Get MyAccount Phones
+  
+  h5= "API call result:"
+  <pre class="rounded"><code class="json">
+  div#apiResult
+  </code></pre>
