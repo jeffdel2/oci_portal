@@ -82,13 +82,15 @@ function callgetPhones() {
   headers: {
     'Accept': 'application/json; okta-version=1.0.0',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer '+cookieValue,
+    'Authorization': 'Bearer '+cookieValue
   }
 })
   
   request
   .then(result => document.getElementById('myAccountResult').innerHTML = JSON.stringify(result.data, null, 4))
   .catch(error => document.getElementById('myAccountResult').innerHTML = JSON.stringify(error.response.data, null, 4))
+  
+  console.log(request);
   
   return request
 }
