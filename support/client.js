@@ -14,7 +14,6 @@ Set API base URL
 */
 var baseAPIUrl = "https://acme-api.glitch.me/"; // This is the base URL of the API Application
 var baseOrgUrl = "https://acme.j5demo.com/";
-console.log("MAIN DOC",document);
 
 
 /*

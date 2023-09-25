@@ -175,7 +175,8 @@ app.post('/submit', (req, res) => {
 
 // Add endpoint for end user registration
 app.use('/factors', ensureLoggedIn, (req, res) => {
-  res.render('factors');
+  res.cookie('token', am_token);
+  res.render('factors', { authenticated: req.isAuthenticated(), user: req.user, amtoken: am_token });
 });
 
 // Add submit endpoint for factors api
