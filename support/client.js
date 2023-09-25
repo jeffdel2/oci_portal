@@ -14,6 +14,7 @@ Set API base URL
 */
 var baseAPIUrl = "https://acme-api.glitch.me/"; // This is the base URL of the API Application
 var baseOrgUrl = "https://acme.j5demo.com/";
+console.log("MAIN COOKIE",cookieValue);
 
 
 /*
@@ -78,6 +79,7 @@ function callAccessAPI() {
 
 function callgetPhones() {
   
+  console.log("INSIDE COOKIE",cookieValue);
   const request = axios.get(baseOrgUrl + "idp/myaccount/phones", {
   headers: {
     'Accept': 'application/json; okta-version=1.0.0',
@@ -90,7 +92,7 @@ function callgetPhones() {
   .then(result => document.getElementById('myAccountResult').innerHTML = JSON.stringify(result.data, null, 4))
   .catch(error => document.getElementById('myAccountResult').innerHTML = JSON.stringify(error.response.data, null, 4))
   
-  console.log(request);
+  console.log("INSIDE REQUEST",request);
   
   return request
 }
@@ -107,11 +109,11 @@ function getPhones() {
     'Authorization': 'Bearer '+cookieValue,
   },
   body: JSON.stringify({})
-
+    
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    console.log(response.body);
+    console.log("INSIDE RESPONSE",response.body);
   });
 }
 
