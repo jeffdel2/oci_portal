@@ -173,6 +173,38 @@ app.post('/submit', (req, res) => {
   })
 });
 
+// Add forgot endpoint for self reg
+app.post('/forgot', (req, res) => {
+  const email = req.body.email;
+  const reg_url = "https://acme-sso.glitch.me/";
+  
+  var options = {
+  'method': 'POST',
+  'url': ORG_URL+'/api/v1/users?activate=false',
+  'headers': {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  body: JSON.stringify({
+    "profile": {
+      "firstName": firstname,
+      "lastName": lastname,
+      "email": email,
+      "login": email
+    },
+  "groupIds": [
+    "00g7qpj0v7Nlu0fjC697"
+  ]
+  })
+
+}
+  request(options, function (error, response) {
+  if (error) throw new Error(error);
+    else (
+    console.log("SUCCESS"));
+    res.redirect(reg_url);
+  })
+});
+
 // Add endpoint for end user registration
 app.use('/factors', ensureLoggedIn, (req, res) => {
   res.cookie('token', am_token);
