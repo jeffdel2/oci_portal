@@ -174,14 +174,15 @@ app.post('/submit', (req, res) => {
 });
 
 // Add endpoint for end user registration
-app.use('/forgot', (req, res) => {
+app.use('/forgotusername', (req, res) => {
   res.render('forgotuser');
 });
 
 // Add forgot endpoint for self reg
 app.post('/forgot', (req, res) => {
+  console.log("TOUCHDOWN");
   const email = req.body.email;
-  const forgot_url = "https://acme-sso.glitch.me/forgot";
+  const forgot_url = "https://acme-sso.glitch.me/forgotusername";
   
   var options = {
   'method': 'POST',
@@ -194,9 +195,10 @@ app.post('/forgot', (req, res) => {
   })
 }}
   request(options, function (error, response) {
+  console.log("REQUEST",request);
   if (error) throw new Error(error);
     else (
-    console.log("SUCCESS"));
+    console.log("SUCCESS",response));
     res.redirect(forgot_url);
   })
 });
