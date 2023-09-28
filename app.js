@@ -15,7 +15,7 @@ var request = require('request');
 // Source and import environment variables
 //require('dotenv').config({ path: '.okta.env' })
 require('dotenv').config({ path: '.env' })
-const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET, TOKEN_VALUE } = process.env;
+const { ORG_URL, WELL_KNOWN_ENDPOINT, CLIENT_ID, CLIENT_SECRET, TOKEN_VALUE, WF_INVOKE } = process.env;
 
 var indexRouter = require('./routes/index');
 
@@ -173,10 +173,15 @@ app.post('/submit', (req, res) => {
   })
 });
 
+// Add endpoint for end user registration
+app.use('/forgot', (req, res) => {
+  res.render('forgotuser');
+});
+
 // Add forgot endpoint for self reg
 app.post('/forgot', (req, res) => {
   const email = req.body.email;
-  const reg_url = "https://acme-sso.glitch.me/";
+  const forgot_url = "https://acme-sso.glitch.me/forgot";
   
   var options = {
   'method': 'POST',
@@ -192,7 +197,7 @@ app.post('/forgot', (req, res) => {
   if (error) throw new Error(error);
     else (
     console.log("SUCCESS"));
-    res.redirect(reg_url);
+    res.redirect(forgot_url);
   })
 });
 
