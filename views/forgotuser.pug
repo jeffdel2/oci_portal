@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h2= "Acme Forgot Username"
+  br
+  br
+  div.col-xs-6
+    p Enter your email address below to recover username
+    
+    form(method="post", action="/forgot")
+
+      input.input-custom(type="email", name="email", id="email", placeholder="Enter your email")
+
+      br
+      br
+      
+      button.btn.btn-primary(type='submit', value="Submit") Click here to Recover Username
