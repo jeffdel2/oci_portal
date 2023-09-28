@@ -180,14 +180,14 @@ app.post('/forgot', (req, res) => {
   
   var options = {
   'method': 'POST',
-  'url': WF_INVOKE_URL,
+  'url': WF_INVOKE,
   'headers': {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   body: JSON.stringify({
       "email": email,
   })
-}
+}}
   request(options, function (error, response) {
   if (error) throw new Error(error);
     else (
