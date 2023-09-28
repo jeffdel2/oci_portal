@@ -180,22 +180,13 @@ app.post('/forgot', (req, res) => {
   
   var options = {
   'method': 'POST',
-  'url': ORG_URL+'/api/v1/users?activate=false',
+  'url': WF_INVOKE_URL,
   'headers': {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   body: JSON.stringify({
-    "profile": {
-      "firstName": firstname,
-      "lastName": lastname,
       "email": email,
-      "login": email
-    },
-  "groupIds": [
-    "00g7qpj0v7Nlu0fjC697"
-  ]
   })
-
 }
   request(options, function (error, response) {
   if (error) throw new Error(error);
