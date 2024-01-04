@@ -91,7 +91,7 @@ function callgetPhones() {
   .then(result => document.getElementById('myAccountResult').innerHTML = JSON.stringify(result.data, null, 4))
   .catch(error => document.getElementById('myAccountResult').innerHTML = JSON.stringify(error.response.data, null, 4))
   
-  console.log("INSIDE REQUEST",request);
+  console.log("INSIDE REQUEST",request.result.data);
   
   return request
 }
