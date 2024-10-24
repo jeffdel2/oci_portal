@@ -45,6 +45,10 @@ block content
         td #{amtoken}
   </code></pre>      
   br
+  div
+    <iframe src="iframe.html" name="myFrame" width="100%"></iframe>
+    <p><a href="https://saml-sample.glitch.me" target="myFrame">Testing</a></p>
+  br
   form.navbar-form.navbar-left(method="get", action="/login")
         button#logout-button.btn.btn-primary(type="submit") Refresh my Tokens
   
