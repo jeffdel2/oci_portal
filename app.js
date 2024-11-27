@@ -187,11 +187,12 @@ app.use('/forgotusername', (req, res) => {
 app.use((req, res, next) => {
   if (req.isAuthenticated()) {
     const obj = JSON.parse(decoded_id_token);
-    console.log("NEW", obj.groups);
+    console.log("NEW", obj.groups[1]);
     const groups = obj.groups;
     console.log("TESTING", groups.indexOf("*Admin*"));
-    req.isAdmin = groups.includes("Admin"); // Check if user is in the "Admin" group
-    req.isUser = groups.includes('Dealer User');   // Check if user is in the "User" group
+    //req.isAdmin = groups.includes('Admin'); // Check if user is in the "Admin" group
+    req.isAdmin = groups.some(group => group.includes('Admin'));
+    req.isUser = groups.some(group => group.includes('User'));   // Check if user is in the "User" group
   } else {
     req.isAdmin = false;
     req.isUser = false;
