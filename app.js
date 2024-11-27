@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest //
-let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2;
+let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2, groups;
 let _base = WELL_KNOWN_ENDPOINT.slice(-1) == '/' ? WELL_KNOWN_ENDPOINT.slice(0, -1) : WELL_KNOWN_ENDPOINT;
 axios
   .get(`${_base}`)
@@ -77,8 +77,14 @@ axios
         am_token = accessToken;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
-        groups 
-        console.log("IDTOKEN", decoded_id_token);
+        groups = JSON.parse(id_token, function (key, value) {
+          if (key == "groups") {
+          return value.toUpperCase();
+          } else {
+            return value;
+            }
+        });
+        console.log("GROUPS INSIDE", groups);
         return done(null, profile);
       }));
     }
@@ -126,8 +132,8 @@ app.use('/authorization-code/callback',
 
 // Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
-  res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
-  //console.log("USER",req);
+  res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token, groups: groups });
+  console.log("GROUPS",groups);
 });
 
 // Add endpoint for end user registration
