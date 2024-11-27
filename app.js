@@ -200,12 +200,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// End User Portal Page
+// Portal Page
 app.use('/portal', ensureLoggedIn, (req, res) => {
   res.render('portal', { authenticated: req.isAuthenticated(), user: req.user, isAdmin: req.isAdmin, isUser: req.isUser, });
   console.log("ON PAGE", req.isUser)
 });
 
+// Admin Panel Page
+app.use('/admin-panel',ensureLoggedIn , (req, res) => {
+  res.render('admin-panel', { authenticated: req.isAuthenticated(), user: req.user, isAdmin: req.isAdmin, isUser: req.isUser, });
+});
 
 
 
