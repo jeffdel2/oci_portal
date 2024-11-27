@@ -7,25 +7,25 @@ block content
   if isAdmin
     a.tile.admin(href="/admin-panel")
       h3 Admin Panel
-      p.tile Manage users, settings, and permissions.
+      p Manage users, settings, and permissions.
     a.tile.admin(href="/reports")
       h3 Reports
-      p.tile View system reports and logs.
+      p View system reports and logs.
 
-    // Display user-specific tiles
+  // Display user-specific tiles
   if isUser
     a.tile.user
       h3 User Dashboard
-      p.tile Access your profile and user-specific content.
+      p Access your profile and user-specific content.
     a.tile.user
       h3 Support
-      p.tile Get help or contact support.
+      p Get help or contact support.
 
     // General tiles for all roles
   a.tile
-      h3 Announcements
-      p.tile Stay updated with the latest news.
+    h3 Announcements
+    p Stay updated with the latest news.
 
   a.tile
-      h3 Settings
-      p.tile Update your account information.
+    h3 Settings
+    p Update your account information.
