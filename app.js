@@ -125,6 +125,7 @@ app.use('/authorization-code/callback',
 // Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
+  console.log("USER",req);
 });
 
 // Add endpoint for end user registration
