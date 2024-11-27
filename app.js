@@ -65,7 +65,7 @@ axios
         userInfoURL: userinfo_endpoint,
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
-        callbackURL: 'https://acme-sso.glitch.me/authorization-code/callback',
+        callbackURL: 'https://nissan-partners.glitch.me/authorization-code/callback',
         scope: 'profile offline_access phone okta.myAccount.phone.read okta.myAccount.phone.manage okta.myAccount.email.read',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
@@ -142,7 +142,7 @@ app.post('/submit', (req, res) => {
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
   const email = req.body.email;
-  const reg_url = "https://acme-sso.glitch.me/";
+  const reg_url = "https://nissan-partners.glitch.me/";
   
   var options = {
   'method': 'POST',
@@ -182,7 +182,7 @@ app.use('/forgotusername', (req, res) => {
 app.post('/forgot', (req, res) => {
   console.log("TOUCHDOWN");
   const email = req.body.email;
-  const forgot_url = "https://acme-sso.glitch.me/forgotusername";
+  const forgot_url = "https://nissan-partners.glitch.me/forgotusername";
   
   var options = {
   'method': 'POST',
@@ -234,7 +234,7 @@ app.post('/logout', (req, res, next) => {
     if (err) { return next(err); }
     let params = {
       id_token_hint: id_token,
-      post_logout_redirect_uri: 'https://acme-sso.glitch.me/'
+      post_logout_redirect_uri: 'https://nissan-partners.glitch.me/'
     }
     res.redirect(logout_url + '?' + qs.stringify(params));
   });
