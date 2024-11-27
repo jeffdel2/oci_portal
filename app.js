@@ -118,7 +118,7 @@ app.use('/login', passport.authenticate('oidc'));
 app.use('/authorization-code/callback',
   passport.authenticate('oidc', { failureMessage: true, failWithError: true }),
   (req, res) => {
-    res.redirect('/profile');
+    res.redirect('/portal');
   }
 );
 //testing
@@ -202,7 +202,7 @@ app.use((req, res, next) => {
 
 // End User Portal Page
 app.use('/portal', ensureLoggedIn, (req, res) => {
-  res.render('portal', { group: group, isAdmin: req.isAdmin, isUser: req.isUser, });
+  res.render('portal', { authenticated: req.isAuthenticated(), user: req.user, isAdmin: req.isAdmin, isUser: req.isUser, });
   console.log("ON PAGE", req.isUser)
 });
 
