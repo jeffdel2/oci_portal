@@ -186,6 +186,9 @@ app.use('/forgotusername', (req, res) => {
 
 app.use((req, res, next) => {
   if (req.isAuthenticated()) {
+    const obj = JSON.parse(decoded_id_token);
+    //const group = req.user;
+    console.log("NEW", obj.groups);
     const groups = req.userContext.userinfo.groups || [];
     req.isAdmin = groups.includes('Dealer Admin'); // Check if user is in the "Admin" group
     req.isUser = groups.includes('Dealer User');   // Check if user is in the "User" group
@@ -196,10 +199,10 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // End User Portal Page
 app.use('/portal', ensureLoggedIn, (req, res) => {
   res.render('portal', { group: group, isAdmin: req.isAdmin, isUser: req.isUser, });
+  console.log("ON PAGE", req.isUser)
 });
 
 
