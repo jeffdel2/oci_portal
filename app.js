@@ -77,6 +77,8 @@ axios
         am_token = accessToken;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
+        groups 
+        console.log("IDTOKEN", decoded_id_token);
         return done(null, profile);
       }));
     }
@@ -125,7 +127,7 @@ app.use('/authorization-code/callback',
 // Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
-  console.log("USER",req);
+  //console.log("USER",req);
 });
 
 // Add endpoint for end user registration
