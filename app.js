@@ -181,19 +181,29 @@ app.use('/forgotusername', (req, res) => {
   res.render('forgotuser');
 });
 
-// End User Portal Page
-app.use('/portal', ensureLoggedIn, (req, res) => {
+///////
+//////
+
+app.use((req, res, next) => {
   if (req.isAuthenticated()) {
-    const group = req.group || [];
-    console.log("GROUPS",req.user);
-    req.isAdmin = group.includes('Dealer Admin'); // Check if user is in the "Admin" group
-    req.isUser = group.includes('Dealer User');   // Check if user is in the "User" group
+    const groups = req.userContext.userinfo.groups || [];
+    req.isAdmin = groups.includes('Dealer Admin'); // Check if user is in the "Admin" group
+    req.isUser = groups.includes('Dealer User');   // Check if user is in the "User" group
   } else {
     req.isAdmin = false;
     req.isUser = false;
   }
-  res.render('portal', { group: group });
+  next();
 });
+
+
+// End User Portal Page
+app.use('/portal', ensureLoggedIn, (req, res) => {
+  res.render('portal', { group: group, isAdmin: req.isAdmin, isUser: req.isUser, });
+});
+
+
+
 
 // Add forgot endpoint for self reg
 app.post('/forgot', (req, res) => {
