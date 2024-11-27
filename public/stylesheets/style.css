@@ -1,3 +1,12 @@
+:root {
+    --color-x: rgba(193, 220, 220, 1);
+    --color-1: #005e60;
+    --color-2: #ffffff;
+    --color-3: rgba(30, 30, 30, 0.75);
+    --color-4: rgba(30, 30, 30, 0.5);
+    --font: "Nissan Regular",Verdana,Arial,sans-serif;
+  }
+
 body.old {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -67,6 +76,8 @@ input.input-custom {
   padding: 5px 0; /* Add padding for spacing */
 }
 
+
+
 .tile { 
   display: inline-block; 
   width: 200px; 
@@ -78,6 +89,7 @@ input.input-custom {
   border-radius: 8px; 
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   text-decoration: none;
+  font-family: var(--font);
 }
 
 .tile:hover {
