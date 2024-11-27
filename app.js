@@ -66,7 +66,8 @@ axios
         clientID: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         callbackURL: 'https://nissan-partners.glitch.me/authorization-code/callback',
-        scope: 'profile offline_access phone okta.myAccount.phone.read okta.myAccount.phone.manage okta.myAccount.email.read',
+        scope: 'profile offline_access phone',
+        //scope: 'profile offline_access phone okta.myAccount.phone.read okta.myAccount.phone.manage okta.myAccount.email.read',
       }, (issuer, profile, context, idToken, accessToken, refreshToken, params, done) => {
         console.log(`OIDC response: ${JSON.stringify({
           issuer, profile, context, idToken,
