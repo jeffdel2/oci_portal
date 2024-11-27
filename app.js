@@ -185,7 +185,7 @@ app.use('/forgotusername', (req, res) => {
 app.use('/portal', ensureLoggedIn, (req, res) => {
   if (req.isAuthenticated()) {
     const group = req.group || [];
-    console.log("GROUPS",groups);
+    console.log("GROUPS",req.user);
     req.isAdmin = group.includes('Dealer Admin'); // Check if user is in the "Admin" group
     req.isUser = group.includes('Dealer User');   // Check if user is in the "User" group
   } else {
