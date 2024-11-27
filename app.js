@@ -77,9 +77,9 @@ axios
         am_token = accessToken;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
-        groups = JSON.parse(id_token, function (key, value) {
-          if (key == "groups") {
-          return value.toUpperCase();
+        groups = JSON.parse(decoded_id_token, function (key, value) {
+          if (key == "name") {
+          return value;
           } else {
             return value;
             }
@@ -133,7 +133,7 @@ app.use('/authorization-code/callback',
 // Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
   res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token, groups: groups });
-  console.log("GROUPS",groups);
+  //console.log("GROUPS",groups);
 });
 
 // Add endpoint for end user registration
