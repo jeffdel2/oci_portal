@@ -181,7 +181,16 @@ app.use('/forgotusername', (req, res) => {
 });
 
 // End User Portal Page
-app.use('/portal', (req, res) => {
+app.use('/portal', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    const groups = req.userContext?.userinfo?.groups || [];
+    req.isAdmin = groups.includes('Admin'); // Check if user is in the "Admin" group
+    req.isUser = groups.includes('User');   // Check if user is in the "User" group
+  } else {
+    req.isAdmin = false;
+    req.isUser = false;
+  }
+  next();
   res.render('portal');
 });
 
