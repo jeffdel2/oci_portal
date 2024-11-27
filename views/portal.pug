@@ -5,10 +5,10 @@ block content
   
   // Display admin-specific tiles
   if isAdmin
-    div.tile.admin
+    a.tile.admin(href="/admin-panel")
       h2 Admin Panel
       p Manage users, settings, and permissions.
-    div.tile.admin
+    a.tile.admin(href="/reports")
       h2 Reports
       p View system reports and logs.
 
