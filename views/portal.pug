@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h2= "My Portal Page"
+  
+  // Display admin-specific tiles
+    if isAdmin
+      div.tile.admin
+        h2 Admin Panel
+        p Manage users, settings, and permissions.
+      div.tile.admin
+        h2 Reports
+        p View system reports and logs.
+
+    // Display user-specific tiles
+    if isUser
+      div.tile.user
+        h2 User Dashboard
+        p Access your profile and user-specific content.
+      div.tile.user
+        h2 Support
+        p Get help or contact support.
+
+    // General tiles for all roles
+    div.tile
+      h2 Announcements
+      p Stay updated with the latest news.
+
+    div.tile
+      h2 Settings
+      p Update your account information.

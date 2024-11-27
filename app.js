@@ -179,6 +179,11 @@ app.use('/forgotusername', (req, res) => {
   res.render('forgotuser');
 });
 
+// End User Portal Page
+app.use('/portal', (req, res) => {
+  res.render('portal');
+});
+
 // Add forgot endpoint for self reg
 app.post('/forgot', (req, res) => {
   console.log("TOUCHDOWN");
