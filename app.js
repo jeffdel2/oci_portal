@@ -189,7 +189,8 @@ app.use((req, res, next) => {
     const obj = JSON.parse(decoded_id_token);
     //const group = req.user;
     console.log("NEW", obj.groups);
-    const groups = req.userContext.userinfo.groups || [];
+    //const groups = req.userContext.userinfo.groups || [];
+    const groups = obj.groups;
     req.isAdmin = groups.includes('Dealer Admin'); // Check if user is in the "Admin" group
     req.isUser = groups.includes('Dealer User');   // Check if user is in the "User" group
   } else {
