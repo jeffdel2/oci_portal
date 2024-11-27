@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest //
-let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2, groups;
+let logout_url, id_token, am_token, decoded_am_token, decoded_id_token, decoded_am_token2, groups, group;
 let _base = WELL_KNOWN_ENDPOINT.slice(-1) == '/' ? WELL_KNOWN_ENDPOINT.slice(0, -1) : WELL_KNOWN_ENDPOINT;
 axios
   .get(`${_base}`)
@@ -77,14 +77,7 @@ axios
         am_token = accessToken;
         decoded_am_token = JSON.stringify(jwt_decode(am_token), null, 4);
         decoded_id_token = JSON.stringify(jwt_decode(id_token), null, 4);
-        groups = JSON.parse(decoded_id_token, function (key, value) {
-          if (key == "name") {
-          return value;
-          } else {
-            return value;
-            }
-        });
-        console.log("GROUPS INSIDE", groups);
+        group = JSON.parse(decoded_id_token);
         return done(null, profile);
       }));
     }
@@ -132,7 +125,7 @@ app.use('/authorization-code/callback',
 
 // Add page to review basic profile data and JWT tokens
 app.use('/profile', ensureLoggedIn, (req, res) => {
-  res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token, groups: groups });
+  res.render('profile', { authenticated: req.isAuthenticated(), user: req.user, idtoken: decoded_id_token, amtoken: decoded_am_token });
   //console.log("GROUPS",groups);
 });
 
@@ -191,15 +184,15 @@ app.use('/forgotusername', (req, res) => {
 // End User Portal Page
 app.use('/portal', ensureLoggedIn, (req, res) => {
   if (req.isAuthenticated()) {
-    const groups = req.user.groups || [];
+    const group = req.group || [];
     console.log("GROUPS",groups);
-    req.isAdmin = groups.includes('Admin'); // Check if user is in the "Admin" group
-    req.isUser = groups.includes('User');   // Check if user is in the "User" group
+    req.isAdmin = group.includes('Dealer Admin'); // Check if user is in the "Admin" group
+    req.isUser = group.includes('Dealer User');   // Check if user is in the "User" group
   } else {
     req.isAdmin = false;
     req.isUser = false;
   }
-  res.render('portal');
+  res.render('portal', { group: group });
 });
 
 // Add forgot endpoint for self reg
