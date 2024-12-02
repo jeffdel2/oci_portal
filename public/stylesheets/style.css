@@ -191,7 +191,7 @@ h1 {
 }
 
 .tile.admin {
-  background: linear-gradient(135deg, #c3002f, #c2002f);
+  background: linear-gradient(135deg, #4C4C4C, #4C4C4C);
 }
 
 .tile.admin:hover {
@@ -203,8 +203,18 @@ h1 {
   background: linear-gradient(135deg, #c3002f, #c2002f);
 }
 
+.tile.user:hover {
+  background: linear-gradient(135deg, #fff, #fff);
+  color: #000;
+}
+
 .tile.general {
   background: linear-gradient(135deg, #000, #000);
+}
+
+.tile.general:hover {
+  background: linear-gradient(135deg, #fff, #fff);
+  color: #000;
 }
 
 .tile p {
@@ -220,6 +230,7 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  background-color: #fff;
 }
 
 iframe {
