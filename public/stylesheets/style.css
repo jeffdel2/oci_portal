@@ -163,7 +163,7 @@ h1 {
   justify-content: center;
   gap: 20px;
   max-width: 1200px;
-  padding: 80px;
+  padding: 30px;
 }
 
 .tile {
@@ -196,7 +196,7 @@ h1 {
 
 .tile.admin:hover {
   background: linear-gradient(135deg, #fff, #fff);
-  color: #fff;
+  color: #000;
 }
 
 .tile.user {
@@ -232,4 +232,10 @@ body.portal {
   background-image: url("https://i.ytimg.com/vi/k7q2fLTOnnU/maxresdefault.jpg");
   background-color: rgba(164, 157, 157, 0.6);
   background-blend-mode: soft-light;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+table {
+  background-color: #fff !important;
 }
