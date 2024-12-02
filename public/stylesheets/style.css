@@ -16,6 +16,10 @@ a.old {
   color: #00B7FF;
 }
 
+a.n:hover {
+  color: #fff;
+}
+
 .btn-n {
   display: inline-block;
   padding: 6px 12px;
