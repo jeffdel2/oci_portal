@@ -8,7 +8,7 @@ script(src="/support/client.js")
 
 html
   head
-    title= "Acme"
+    title= "Nissan"
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel="stylesheet", href='/public/stylesheets/style.css')
@@ -24,10 +24,8 @@ html
           form.navbar-form.navbar-right(method="post", action="/logout")
             button#logout-button.btn.btn-danger(type="submit") Logout
         else
-          form.navbar-form.navbar-right(method="get", action="/register")
-            button#login-button-n.btn.btn-primary-n(type="submit") Sign Up
           form.navbar-form.navbar-right(method="get", action="/login")
-            button#login-button-n.btn.btn-primary-n(type="submit") Sign In
+            button#login-button-n.btn-n.btn-primary-n(type="submit") Sign In
     div#content.container
     
       block content
