@@ -43,7 +43,7 @@ a.n:hover {
     border-right-color: transparent;
     border-bottom-color: transparent;
     border-left-color: transparent;
-  border-radius: 22px;
+  border-radius: 16px;
 }
 
 .btn-primary-n {
@@ -51,7 +51,7 @@ a.n:hover {
   background-color: #c3002f;
   border-color: #2e6da4;
   border: 0;
-  border-radius: 22px;
+  border-radius: 6px;
 }
 
 .btn-primary-n:hover {
@@ -65,6 +65,7 @@ a.n:hover {
   background-color: #000;
   border-color: #d43f3a;
   border: 0;
+  border-radius: 6px;
 }
 
 .btn-danger-n:hover {
@@ -162,46 +163,52 @@ h1 {
   padding: 20px;
 }
 
-      .tile {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 250px;
-        height: 150px;
-        text-align: center;
-        border-radius: 16px;
-        color: #fff;
-        font-size: 18px;
-        font-weight: bold;
-        text-decoration: none;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 150px;
+  text-align: center;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
-      .tile:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        text-decoration: none;
-      }
+.tile:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: #fff;
+}
 
-      .tile.admin {
-        background: linear-gradient(135deg, #c3002f, #c2002f);
-      }
+.tile.admin {
+  background: linear-gradient(135deg, #c3002f, #c2002f);
+}
 
-      .tile.user {
-        background: linear-gradient(135deg, #c3002f, #c2002f);
-      }
+.tile.admin:hover {
+  background: linear-gradient(135deg, #fff, #fff);
+  color: #fff;
+}
 
-      .tile.general {
-        background: linear-gradient(135deg, #000, #000);
-      }
+.tile.user {
+  background: linear-gradient(135deg, #c3002f, #c2002f);
+}
 
-      .tile p {
-        font-size: 14px;
-        margin-top: 8px;
-        font-weight: normal;
-      }
+.tile.general {
+  background: linear-gradient(135deg, #000, #000);
+}
+
+.tile p {
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: normal;
+}
 
 .iframe-container {
   width: 90%;
