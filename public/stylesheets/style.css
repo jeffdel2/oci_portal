@@ -147,6 +147,9 @@ body {
   display: inline;
   flex-direction: column;
   align-items: center;
+  background-image: url("https://i.ytimg.com/vi/k7q2fLTOnnU/maxresdefault.jpg") !important;
+  background-color: rgba(164, 157, 157, 0.6) !important;
+  background-blend-mode: soft-light !important;
 }
 
 h1 {
