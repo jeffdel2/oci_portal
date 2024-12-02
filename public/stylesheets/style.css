@@ -106,13 +106,12 @@ input.input-custom {
 }
 
 .footer {
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: #333; /* Set your desired background color */
   color: #fff; /* Set your desired text color */
-  text-align: center;
+  text-align: left;
   padding: 5px 0; /* Add padding for spacing */
 }
 
@@ -169,7 +168,7 @@ h1 {
       }
 
       .tile.admin {
-        background: linear-gradient(135deg, #ff7e79, #ff6f61);
+        background: linear-gradient(135deg, #c3002f, #ff6f61);
       }
 
       .tile.user {
