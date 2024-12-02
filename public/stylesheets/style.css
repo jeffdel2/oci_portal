@@ -176,7 +176,7 @@ h1 {
       }
 
       .tile.general {
-        background: linear-gradient(135deg, #6ebaff, #3a86ff);
+        background: linear-gradient(135deg, #000, #000);
       }
 
       .tile p {
