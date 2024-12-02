@@ -224,3 +224,9 @@ iframe {
   height: 100%;
   border: none;
 }
+
+body.portal {
+  background-image: url("https://i.ytimg.com/vi/k7q2fLTOnnU/maxresdefault.jpg");
+  background-color: rgba(164, 157, 157, 0.6);
+  background-blend-mode: soft-light;
+}
