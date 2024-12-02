@@ -2,3 +2,9 @@ extends layout
 
 block content
   h2= "Admin Panel"
+  
+  .iframe-container
+      iframe(src="https://partners.login.j5demo.com/partner-portal" title="Partner Portal")
+      
+  form.navbar-form.navbar-left(method="get", action="/portal")
+        button#logout-button.btn-n.btn-primary-n(type="submit") Back to Portal
