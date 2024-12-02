@@ -22,7 +22,7 @@ html
             img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_2020_logo.svg/716px-Nissan_2020_logo.svg.png", height="100", style="padding: 10px;")
         if authenticated
           form.navbar-form.navbar-right(method="post", action="/logout")
-            button#logout-button.btn.btn-danger(type="submit") Logout
+            button#logout-button.btn-n.btn-danger-n(type="submit") Logout
         else
           form.navbar-form.navbar-right(method="get", action="/login")
             button#login-button-n.btn-n.btn-primary-n(type="submit") Sign In

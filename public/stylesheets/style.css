@@ -56,6 +56,19 @@ a.old {
   border: 1px solid #000;
 }
 
+.btn-danger-n {
+  color: #fff;
+  background-color: #000;
+  border-color: #d43f3a;
+  border: 0;
+}
+
+.btn-danger-n:hover {
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
 btn.old {
   background-color: #4CAF50; /* Green */
   border: none;
