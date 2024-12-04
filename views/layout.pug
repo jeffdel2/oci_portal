@@ -25,6 +25,7 @@ html
             button#logout-button.btn-n.btn-danger-n(type="submit") Logout
           form.navbar-form.navbar-right(method="get", action="/profile")
             button#logout-button.btn-n.btn-primary-n(type="submit") My Profile
+            p Hello, <b>#{user.displayName}</b>.
         else
           form.navbar-form.navbar-right(method="get", action="/login")
             button#login-button-n.btn-n.btn-primary-n(type="submit") Sign In
