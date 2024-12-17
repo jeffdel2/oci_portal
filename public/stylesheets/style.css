@@ -257,3 +257,7 @@ div.hero {
   padding: 10px;
   width: 100%;
 }
+
+.okta-realms-partner-portal-rtde4j {
+  display: none !important;
+}
