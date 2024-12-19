@@ -225,7 +225,7 @@ h1 {
 
 .iframe-container {
   width: 95%;
-  height: 80vh;
+  height: 100vh;
   border: 2px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
