@@ -1,59 +1,65 @@
 extends layout
 
 block content
-  h2= "My Healthcare Profile"
-  br
-  div
-    p Hello, <b>#{user.displayName}</b>. Below is the information that was read with your #[a(href="https://developer.okta.com/docs/api/resources/oidc.html#get-user-information", target="_blank") Access Token].
-  br
-  table.table.table-striped
-    thead 
-      tr 
-        th Claim 
-        th Value 
-    tbody 
-    for values, claims in user
-      tr 
-        td #{claims}
-        td #{values}
-  
-  br
-  h2= "My Tokens"
-  br
-  div
-    p Below are the values for <b>#{user.displayName}'s</b> id and access tokens minted by Okta.
-  
-  br
-  <pre class="rounded"><code class="json">
-  table.table.table-striped
-    thead 
-      tr 
-        th ID Token 
-    tbody
-      tr
-      td #{idtoken}
-      
-  </code></pre>
-  br
-  <pre class="rounded"><code class="json">
-  table.table.table-striped
-    thead 
-      tr 
-        th Access Token
-    tbody 
-      tr
-        td #{amtoken}
-  </code></pre>      
-  br
-
-  form.navbar-form.navbar-left(method="get", action="/login")
-        button#logout-button.btn.btn-primary(type="submit") Refresh my Tokens
-  
-  form.navbar-form.navbar-left(method="get", action="/apis")
-        button#logout-button.btn.btn-primary(type="submit") Now lets test some APIs
+  div.profile-container
+    div.profile-header
+      div.profile-avatar
+        div.avatar-circle
+          span.avatar-text= user.displayName ? user.displayName.charAt(0).toUpperCase() : 'U'
+      div.profile-info
+        h1.profile-title= "My Healthcare Profile"
+        p.profile-subtitle= "Welcome back, " + user.displayName
+        p.profile-description Below is your healthcare profile information and authentication details.
+    
+    div.profile-content
+      div.profile-section
+        h2.section-title
+          span.section-icon 📋
+          | Profile Information
+        p.section-description Information read from your #[a(href="https://developer.okta.com/docs/api/resources/oidc.html#get-user-information", target="_blank") Access Token].
         
-  form.navbar-form.navbar-left(method="get", action="/factors")
-        button#logout-button.btn.btn-primary(type="submit") Factors
+        div.profile-card
+          table.profile-table
+            thead 
+              tr 
+                th.table-header Claim 
+                th.table-header Value 
+            tbody 
+            for values, claims in user
+              tr.table-row
+                td.table-cell.claim-cell #{claims}
+                td.table-cell.value-cell #{values}
+      
+      div.profile-section
+        h2.section-title
+          span.section-icon 🔐
+          | Authentication Tokens
+        p.section-description Below are the values for <b>#{user.displayName}'s</b> id and access tokens minted by Okta.
+        
+        div.token-cards
+          div.token-card
+            h3.token-title ID Token
+            div.token-content
+              pre.token-code #{idtoken}
+          
+          div.token-card
+            h3.token-title Access Token
+            div.token-content
+              pre.token-code #{amtoken}
+    
+    div.profile-actions
+      div.action-buttons
+        a.btn.btn-primary.btn-modern(href="/login")
+          span.btn-icon 🔄
+          | Refresh Tokens
+        
+        a.btn.btn-secondary.btn-modern(href="/apis")
+          span.btn-icon 🧪
+          | Test APIs
+        
+        a.btn.btn-tertiary.btn-modern(href="/factors")
+          span.btn-icon 🔑
+          | Manage Factors
         
 
     
