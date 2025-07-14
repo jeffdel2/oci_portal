@@ -141,15 +141,13 @@ input.input-custom {
 
 body {
   font-family: var(--font) !important;
-  background-color: #f4f4f9;
+  background-color: #f5f5dc;
   margin: 0;
   padding: 0;
   display: inline;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-  background-color: rgba(164, 157, 157, 0.6) !important;
-  background-blend-mode: soft-light !important;
+  background: #f5f5dc !important;
 }
 
 h1 {
@@ -174,47 +172,52 @@ h1 {
   width: 250px;
   height: 150px;
   text-align: center;
-  border-radius: 16px;
-  color: #fff;
+  border-radius: 50px;
+  color: #333;
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
 }
 
 .tile:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   text-decoration: none;
-  color: #fff;
+  color: #333;
 }
 
 .tile.admin {
-  background: linear-gradient(135deg, #4C4C4C, #4C4C4C);
+  background: #337ab7;
+  color: white;
 }
 
 .tile.admin:hover {
-  background: linear-gradient(135deg, #fff, #fff);
-  color: #000;
+  background: #286090;
+  color: white;
 }
 
 .tile.user {
-  background: linear-gradient(135deg, #c3002f, #c2002f);
+  background: #337ab7;
+  color: white;
 }
 
 .tile.user:hover {
-  background: linear-gradient(135deg, #fff, #fff);
-  color: #000;
+  background: #286090;
+  color: white;
 }
 
 .tile.general {
-  background: linear-gradient(135deg, #000, #000);
+  background: #337ab7;
+  color: white;
 }
 
 .tile.general:hover {
-  background: linear-gradient(135deg, #fff, #fff);
-  color: #000;
+  background: #286090;
+  color: white;
 }
 
 .tile p {
@@ -240,11 +243,7 @@ iframe {
 }
 
 body.portal {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  background-color: rgba(164, 157, 157, 0.6);
-  background-blend-mode: soft-light;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: #f5f5dc;
 }
 
 table {
@@ -260,7 +259,7 @@ div.hero {
 
 /* Modern Hero Styles */
 .hero {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: #8B7355;
   border-radius: 20px;
   padding: 60px 40px;
   margin: 20px 0;
@@ -329,20 +328,22 @@ div.hero {
 }
 
 .feature {
-  background: rgba(255, 255, 255, 0.1);
+  background: #E5D3B3;
+  color: #333;
   padding: 30px;
   border-radius: 15px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
+  border: 1px solid #d2b48c;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .feature:hover {
+  background: #D2B48C;
+  color: #333;
   transform: translateY(-5px);
 }
 
 .feature-icon {
-  font-size: 3rem;
+  font-size: 8rem;
   margin-bottom: 20px;
   display: block;
 }
@@ -412,7 +413,7 @@ div.hero {
   gap: 30px;
   margin-bottom: 50px;
   padding: 40px;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: #8B7355;
   border-radius: 20px;
   color: white;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
@@ -510,7 +511,7 @@ div.hero {
 }
 
 .table-header {
-  background: #4facfe;
+  background: #8B7355;
   color: white;
   padding: 15px;
   text-align: left;
@@ -627,32 +628,32 @@ div.hero {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: #337ab7;
   color: white;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #3a8bfd 0%, #00d4e0 100%);
+  background: #286090;
   color: white;
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #A0522D;
   color: white;
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  background: #8B4513;
   color: white;
 }
 
 .btn-tertiary {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: #CD853F;
   color: white;
 }
 
 .btn-tertiary:hover {
-  background: linear-gradient(135deg, #e085e8 0%, #e54b5e 100%);
+  background: #B8860B;
   color: white;
 }
 

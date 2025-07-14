@@ -19,15 +19,15 @@ html
       div.container-fluid
         ul.nav.navbar-nav
           a(href="/")
-            img(src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiM0ZmFjZmUiLz48dGV4dCB4PSIxMDAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SGVhbHRoY2FyZSBQb3J0YWw8L3RleHQ+PC9zdmc+", height="60", style="padding: 10px; border-radius: 8px;")
+            img(src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiM4QjczNTUiLz48dGV4dCB4PSIxMDAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SGVhbHRoY2FyZSBQb3J0YWw8L3RleHQ+PC9zdmc+", height="60", style="padding: 10px; border-radius: 8px;")
         if authenticated
           form.navbar-form.navbar-right(method="post", action="/logout")
-            button#logout-button.btn-n.btn-danger-n(type="submit") Logout
+            button#logout-button.btn.btn-primary.btn-lg.btn-modern(type="submit") Logout
           form.navbar-form.navbar-right(method="get", action="/profile")
-            button#logout-button.btn-n.btn-primary-n(type="submit") My Profile
+            button#logout-button.btn.btn-primary.btn-lg.btn-modern(type="submit") My Profile
         else
           form.navbar-form.navbar-right(method="get", action="/login")
-            button#login-button-n.btn-n.btn-primary-n(type="submit") Sign In
+            button#login-button.btn.btn-primary.btn-lg.btn-modern(type="submit") Sign In
     div#content-index.container
       
       block content-index
