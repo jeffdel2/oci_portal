@@ -8,7 +8,7 @@ script(src="/support/client.js")
 
 html
   head
-    title= "Nissan"
+    title= "Healthcare Portal"
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1, shrink-to-fit=no")
     link(rel="stylesheet", href='/public/stylesheets/style.css')
@@ -19,7 +19,7 @@ html
       div.container-fluid
         ul.nav.navbar-nav
           a(href="/")
-            img(src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_2020_logo.svg/716px-Nissan_2020_logo.svg.png", height="100", style="padding: 10px;")
+            img(src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiM0ZmFjZmUiLz48dGV4dCB4PSIxMDAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SGVhbHRoY2FyZSBQb3J0YWw8L3RleHQ+PC9zdmc+", height="60", style="padding: 10px; border-radius: 8px;")
         if authenticated
           form.navbar-form.navbar-right(method="post", action="/logout")
             button#logout-button.btn-n.btn-danger-n(type="submit") Logout
@@ -39,4 +39,4 @@ html
   
     //-
       footer.footer
-        p Copyright © 2024 Nissan North America
+        p Copyright © 2024 Healthcare Portal
