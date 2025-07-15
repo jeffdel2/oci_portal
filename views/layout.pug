@@ -14,12 +14,13 @@ html
     link(rel="stylesheet", href='/public/stylesheets/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet',href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/monokai-sublime.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
   body#samples
     nav.navbar.navbar-default
       div.container-fluid
         ul.nav.navbar-nav
           a(href="/")
-            img(src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIGZpbGw9IiM4QjczNTUiLz48dGV4dCB4PSIxMDAiIHk9IjM1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SGVhbHRoY2FyZSBQb3J0YWw8L3RleHQ+PC9zdmc+", height="60", style="padding: 10px; border-radius: 8px;")
+            i.fa.fa-home(style="font-size: 6rem; color: #337ab7; padding: 10px;")
         if authenticated
           form.navbar-form.navbar-right(method="post", action="/logout")
             button#logout-button.btn.btn-primary.btn-lg.btn-modern(type="submit") Logout

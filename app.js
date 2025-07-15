@@ -188,8 +188,8 @@ app.use((req, res, next) => {
   if (req.isAuthenticated()) {
     const obj = JSON.parse(decoded_id_token);
     const groups = obj.groups;
-    req.isAdmin = groups.some(group => group.includes('Admin'));
-    req.isUser = groups.some(group => group.includes('User'));
+    req.isAdmin = groups.some(group => group.includes('Admins'));
+    req.isUser = groups.some(group => group.includes('Practitioners'));
   } else {
     req.isAdmin = false;
     req.isUser = false;

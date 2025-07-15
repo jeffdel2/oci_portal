@@ -2,32 +2,51 @@ extends layout
 
 block content
 
-  div.portal
-  // Display admin-specific tiles
-  if isAdmin
-    a.tile.admin(href="/admin-panel")
-      h3 Admin Panel
-      p Manage users, settings, and permissions.
-    a.tile.admin(href="/reports")
-      h3 Reports
-      p View system reports and logs.
-    a.tile.admin(href="/profile")
-      h3 Settings
-      p Update your account information.
+  div.hero
+    div.hero-content
+      h1.hero-title= "Healthcare Portal"
+      p.hero-subtitle= "Access your healthcare tools and patient management features."
+      
+      div.portal
+        // Display admin-specific tiles
+        if isAdmin
+          a.tile.admin(href="/admin-panel")
+            div.tile-icon
+              i.fa.fa-user-md
+            h3 Healthcare Admin
+            p Manage users, settings, and system permissions.
+          a.tile.admin(href="/reports")
+            div.tile-icon
+              i.fa.fa-chart-line
+            h3 Analytics & Reports
+            p View healthcare metrics and system reports.
+          a.tile.admin(href="/profile")
+            div.tile-icon
+              i.fa.fa-cog
+            h3 System Settings
+            p Update account and system configuration.
 
-  // Display user-specific tiles
-  if isUser
-    a.tile.user(href="/profile")
-      h3 Patient Records
-      p View your patient information.
-    a.tile.user(href="/dealer-app")
-      h3 Medical Dashboard
-      p Access patient care tools
-    a.tile.user(href="/")
-      h3 Support
-      p Get help or contact support.
+        // Display user-specific tiles
+        if isUser
+          a.tile.user(href="/profile")
+            div.tile-icon
+              i.fa.fa-user-injured
+            h3 Patient Records
+            p Access and manage patient information.
+          a.tile.user(href="/dealer-app")
+            div.tile-icon
+              i.fa.fa-stethoscope
+            h3 Medical Dashboard
+            p Access patient care and treatment tools.
+          a.tile.user(href="/")
+            div.tile-icon
+              i.fa.fa-headset
+            h3 Healthcare Support
+            p Get help or contact medical support.
 
-  // General tiles for all roles
-  a.tile.general(href="/")
-    h3 Announcements
-    p Stay updated with the latest news.
+        // General tiles for all roles
+        a.tile.general(href="/")
+          div.tile-icon
+            i.fa.fa-bullhorn
+          h3 Healthcare Updates
+          p Stay updated with medical news and announcements.
