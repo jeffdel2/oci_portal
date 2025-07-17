@@ -189,7 +189,7 @@ app.use((req, res, next) => {
     const obj = JSON.parse(decoded_id_token);
     const groups = obj.groups;
     req.isAdmin = groups.some(group => group.includes('Admin'));
-    req.isUser = groups.some(group => group.includes('Users'));
+    req.isUser = groups.some(group => group.includes('User'));
   } else {
     req.isAdmin = false;
     req.isUser = false;
