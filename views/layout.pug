@@ -20,15 +20,17 @@ html
       div.container-fluid
         ul.nav.navbar-nav
           a(href="/")
-            i.fa.fa-home(style="font-size: 6rem; color: #337ab7; padding: 10px;")
+            i.fa.fa-home
         if authenticated
-          form.navbar-form.navbar-right(method="post", action="/logout")
-            button#logout-button.btn.btn-primary.btn-lg.btn-modern(type="submit") Logout
-          form.navbar-form.navbar-right(method="get", action="/profile")
-            button#logout-button.btn.btn-primary.btn-lg.btn-modern(type="submit") My Profile
+          div.navbar-right
+            form.navbar-form(method="get", action="/profile")
+              button#logout-button.btn.btn-primary.btn-modern(type="submit") My Profile
+            form.navbar-form(method="post", action="/logout")
+              button#logout-button.btn.btn-primary.btn-modern(type="submit") Logout
         else
-          form.navbar-form.navbar-right(method="get", action="/login")
-            button#login-button.btn.btn-primary.btn-lg.btn-modern(type="submit") Sign In
+          div.navbar-right
+            form.navbar-form(method="get", action="/login")
+              button#login-button.btn.btn-primary.btn-modern(type="submit") Sign In
     div#content-index.container
       
       block content-index
