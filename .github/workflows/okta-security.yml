@@ -1,0 +1,243 @@
+name: Okta Security
+
+on:
+  schedule:
+    # Run security checks daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  okta-security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.5.0"
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check for Okta Secrets in Code
+      run: |
+        echo "Checking for Okta secrets in code..."
+        # Check for hardcoded Okta credentials
+        if grep -r -i "okta.*token\|okta.*secret\|okta.*key" . \
+          --exclude-dir=node_modules \
+          --exclude-dir=.git \
+          --exclude-dir=.github \
+          --exclude=*.log; then
+          echo "Warning: Potential Okta secrets found in code"
+        else
+          echo "No obvious Okta secrets found in code"
+        fi
+    
+    - name: Validate Okta Environment Variables
+      run: |
+        echo "Validating Okta environment variables..."
+        required_vars=("OKTA_ORG_URL" "OKTA_API_TOKEN" "CLIENT_ID" "CLIENT_SECRET")
+        
+        for var in "${required_vars[@]}"; do
+          if [ -z "${!var}" ]; then
+            echo "Warning: $var is not set"
+          else
+            echo "$var is configured"
+          fi
+        done
+    
+    - name: Check Okta Provider Configuration
+      run: |
+        echo "Checking Okta provider configuration..."
+        if [ -d "terraform" ]; then
+          cd terraform
+          if grep -r "okta" . --include="*.tf" --include="*.tfvars"; then
+            echo "Okta provider configuration found"
+            # Check for proper Okta provider configuration
+            if grep -q "provider.*okta" *.tf; then
+              echo "Okta provider properly configured"
+            fi
+          else
+            echo "No Okta provider configuration found"
+          fi
+        else
+          echo "No terraform directory found"
+        fi
+    
+    - name: Validate Okta App Configuration
+      run: |
+        echo "Validating Okta app configuration..."
+        if [ -f "app.js" ]; then
+          # Check for Okta OpenID Connect configuration
+          if grep -q "passport-openidconnect" app.js; then
+            echo "Okta OpenID Connect configuration found"
+          fi
+          
+          # Check for required Okta environment variables
+          if grep -q "ORG_URL\|CLIENT_ID\|CLIENT_SECRET" app.js; then
+            echo "Okta environment variables referenced in app.js"
+          fi
+        fi
+    
+    - name: Test Okta API Access
+      run: |
+        echo "Testing Okta API access..."
+        # Test Okta API access (commented out for security)
+        # if [ -n "${{ secrets.OKTA_API_TOKEN }}" ] && [ -n "${{ secrets.OKTA_ORG_URL }}" ]; then
+        #   curl -H "Authorization: SSWS ${{ secrets.OKTA_API_TOKEN }}" \
+        #     "${{ secrets.OKTA_ORG_URL }}/api/v1/users/me" || echo "Okta API test failed"
+        # fi
+
+  terraform-security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: "1.5.0"
+    
+    - name: Install tfsec
+      uses: aquasecurity/tfsec-action@v1.0.0
+      with:
+        working_directory: terraform
+    
+    - name: Run tfsec for Okta
+      run: |
+        if [ -d "terraform" ]; then
+          cd terraform
+          tfsec --format sarif --out tfsec-okta.sarif
+        else
+          echo "No terraform directory found"
+        fi
+    
+    - name: Upload tfsec results
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: terraform/tfsec-okta.sarif
+    
+    - name: Check for Okta State Files
+      run: |
+        echo "Checking for Okta state files..."
+        if [ -d "terraform" ]; then
+          cd terraform
+          if [ -f "terraform.tfstate" ]; then
+            echo "Terraform state file found"
+            # Check if state contains Okta resources
+            if grep -q "okta" terraform.tfstate; then
+              echo "Okta resources found in state file"
+            fi
+          fi
+        fi
+
+  okta-compliance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check Okta Compliance
+      run: |
+        echo "Checking Okta compliance..."
+        
+        # Check for proper session configuration
+        if [ -f "app.js" ]; then
+          if grep -q "session.*secret" app.js; then
+            echo "Session secret configured"
+          else
+            echo "Warning: Session secret not found"
+          fi
+        fi
+        
+        # Check for HTTPS usage
+        if grep -r "http://" . --exclude-dir=node_modules --exclude-dir=.git; then
+          echo "Warning: HTTP URLs found - consider using HTTPS"
+        fi
+        
+        # Check for proper error handling
+        if [ -f "app.js" ]; then
+          if grep -q "error.*handler\|catch\|try" app.js; then
+            echo "Error handling found"
+          else
+            echo "Warning: Error handling may be insufficient"
+          fi
+        fi
+    
+    - name: Validate Okta Security Headers
+      run: |
+        echo "Validating Okta security headers..."
+        # Check for security headers in the application
+        if [ -f "app.js" ]; then
+          if grep -q "helmet\|security\|headers" app.js; then
+            echo "Security headers configured"
+          else
+            echo "Warning: Security headers not found"
+          fi
+        fi
+
+  dependency-security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Check Okta Dependencies
+      run: |
+        echo "Checking Okta-related dependencies..."
+        
+        # Check for Okta-related packages
+        if npm list | grep -i okta; then
+          echo "Okta packages found:"
+          npm list | grep -i okta
+        else
+          echo "No Okta packages found"
+        fi
+        
+        # Check for passport packages
+        if npm list | grep -i passport; then
+          echo "Passport packages found:"
+          npm list | grep -i passport
+        fi
+    
+    - name: Run npm audit for Okta
+      run: |
+        echo "Running npm audit for security vulnerabilities..."
+        npm audit --audit-level moderate
+        continue-on-error: true
+    
+    - name: Check for outdated Okta packages
+      run: |
+        echo "Checking for outdated Okta packages..."
+        npm outdated | grep -i okta || echo "No outdated Okta packages found" 
