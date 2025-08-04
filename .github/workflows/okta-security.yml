@@ -111,7 +111,7 @@ jobs:
         terraform_version: "1.5.0"
     
     - name: Install tfsec
-      uses: aquasecurity/tfsec-action@v1.0.0
+      uses: aquasecurity/tfsec-action@v1.0.3
       with:
         working_directory: terraform
     
